@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="js/pilotforge.js"></script>
+    <script src="js/dom-to-image.min.js"></script>
+</head>
+
+<body>
+    <div class=" main">
+        <div class="overlay"></div>
+        <div class=" sidebar">
+            <div class="menu">
+                <button class="active statsbutton">Stats</button>
+                <button class="settingsbutton">Settings</button>
+            </div>
+            <div class="stats">
+                <div class="inputcontainer">
+                    <Span>Name</Span><input style="width: 224px;" type="text" name="pilotname" value="Name of your Pilot">
+                </div>
+
+                <div class="inputcontainer">
+                    <Span>Ship</Span><input id="name" style="width: 126px !important; margin-left: 22px;" type="text" name="shipname" value="Ship">
+                    <Span>PS</Span><input class=" shortvalue" type="number" min="1" name="psbox" value="1">
+                </div>
+
+                <div style="margin-top: 36px !important;" class=" inputcontainer flex">
+                    <div>
+                        <Span class=" iconfont">%</Span><input class=" shortvalue" type="number" min="1" name="attack" value="1">
+                    </div>
+                    <div>
+                        <Span class=" iconfont">^</Span><input class=" shortvalue" type="number" min="1" name="defense" value="1">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 36px;" class=" inputcontainer flex">
+                    <div>
+                        <Span class=" iconfont">&amp;</Span><input class=" shortvalue" type="number" min="1" name="hull" value="1">
+                    </div>
+                    <div>
+                        <Span class=" iconfont">*</Span><input class=" shortvalue" type="number" min="1" name="shields" value="1">
+                    </div>
+                </div>
+
+                <div class="inputcontainer">
+                    <Span>Actions</Span><br />
+                    <div class="actions">
+                        <input type="checkbox" class="focus shortvalue" name="focus" />
+                        <input type="checkbox" class="targetlock shortvalue" name="targetlock" />
+                        <input type="checkbox" class="barrelroll shortvalue" name="barrelroll" />
+                        <input type="checkbox" class="boost shortvalue" name="boost" />
+                        <input type="checkbox" class="cloak shortvalue" name="cloak" />
+                        <input type="checkbox" class="evade shortvalue" name="evade" />
+                        <input type="checkbox" class="arc shortvalue" name="arc" />
+                        <input type="checkbox" class="slam shortvalue" name="slam" />
+                    </div>
+                </div>
+                <div class=" inputcontainer">
+                    <Span>Card text</Span><br /><textarea name="pilottext" rows="5" cols="">Some rules here</textarea>
+                </div>
+
+                <div class=" inputcontainer">
+                    <div>Artwork</div>
+                    <img id="preview" width="100%" class=" preview" />
+                    <input class=" fileinput" name="pilot" type="file">
+                </div>
+            </div>
+            <div class="settings">
+                <div class=" options">
+                    <h4>Image Options</h4>
+                    <div class="section">
+                        <!-- Flip Image, Size Adjustment, position adjustments, boxes / backgrounds for texts --!>
+                        <div class="inputcontainer">
+                            <span>Gradient</span> <input checked type="checkbox" name="gradient" />
+                        </div>
+                        <div class="inputcontainer">
+                            <span>Image Size<span> 
+                            <form class="imageSizeForm">
+                                <input type="radio" class="shortvalue" name="imagesize" value="auto"> Auto <br>
+                                <input type="radio" class="shortvalue" name="imagesize" value="manual"> Custom <br>
+                            </form>
+                        </div>
+                    </div>
+                    <h4>Layout Options</h4>
+                    <div class="section">
+                        <div class="inputcontainer">
+                            <span>Statistics box</span> <input checked type="checkbox" name="statframe" />
+                        </div>
+                        <div class="inputcontainer">
+                            <span>Statistics icons</span> <input checked type="checkbox" name="staticons" />
+                        </div>
+                        <div class="inputcontainer">
+                            <span>Pilotskill box</span> <input checked type="checkbox" name="psframe" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div id="render" class="render" src="none.png"></div>
+            <button onclick="saveImage()" class="exportbutton">Save Card</button>
+            <div id="pilot" class=" pilot">
+                <div class=" pilotskill">
+                    <div class="psbox">1</div>
+                </div>
+                <div class="statscontainer">
+                    <div class="attack stat">1</div>
+                    <div class="defense stat">1</div>
+                    <div class="hull stat">1</div>
+                    <div class="shields stat">1</div>
+                </div>
+                <div class="gradient">
+                    <div class=" pilotname">Name of your Pilot</div>
+                    <div class=" shipname">Ship</div>
+                    <div id="iconbar" class="iconbar"></div>
+                    <div class=" pilottext">Some rules here</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

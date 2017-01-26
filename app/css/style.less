@@ -1,0 +1,401 @@
+@background-color: #353535;
+@attack-red: #f01e44;
+@defense-green: #8bce44;
+@pilotskill-orange: #f47e20;
+@hull-yellow: yellow;
+@shields-blue: #86e3f1;
+@widthratio: 0.716;
+@font-face {
+    font-family: xwing-icons;
+    src: url('../fonts/xwing-miniatures.ttf');
+}
+
+@font-face {
+    font-family: xwing-text;
+    src: url('../fonts/xwingfont.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    color: white;
+    font-family: sans-serif;
+    background-color: @background-color;
+}
+
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-color: @background-color;
+}
+
+.iconfont {
+    font-family: xwing-icons;
+    font-size: 2rem;
+    text-align: center;
+    display: inline-block;
+    width: 30px;
+}
+
+.focus,
+.targetlock,
+.barrelroll,
+.boost,
+.cloak,
+.evade,
+.arc,
+.slam {
+    margin: 12px 30px;
+    width: auto !important;
+    &:before {
+        font-size: 1.25rem;
+        font-family: xwing-icons;
+        position: relative;
+        top: -3px;
+        left: -26px;
+    }
+}
+
+.focus {
+    &:before {
+        content: '\0066';
+    }
+}
+
+.targetlock {
+    &:before {
+        content: "\006c";
+    }
+}
+
+.barrelroll {
+    &:before {
+        content: "\0072";
+        left: -29px;
+    }
+}
+
+.boost {
+    &:before {
+        content: "\0062";
+    }
+}
+
+.evade {
+    &:before {
+        content: "\0065";
+    }
+}
+
+.cloak {
+    &:before {
+        content: "\006b";
+    }
+}
+
+.arc {
+    &:before {
+        content: "R";
+    }
+}
+
+.slam {
+    &:before {
+        content: "s";
+        left: -22px;
+    }
+}
+
+.main {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    .sidebar {
+        position: relative;
+        width: 360px;
+        height: 100%;
+        h4 {
+            font-weight: 300;
+        }
+        .section {
+            border-top: 2px solid #333;
+            padding-top: 16px;
+        }
+        .inputcontainer {
+            margin-bottom: 1rem;
+            .actions {
+                border-top: 2px solid #333;
+                width: 100%;
+                display: block;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding-left: 56px;
+                padding-top: 12px;
+                margin-bottom: 30px;
+                box-sizing: border-box;
+            }
+            &.flex {
+                display: flex;
+                justify-content: space-around
+            }
+            input,
+            textarea {
+                border: 1px solid #333;
+                padding: 3px;
+                font-family: sans-serif;
+            }
+            textarea {
+                width: 100%;
+                resize: vertical;
+            }
+            input {
+                margin-left: 8px;
+                font-size: 1rem;
+                width: 120px;
+            }
+            .shortvalue {
+                width: 50px;
+            }
+        }
+        .menu {
+            height: 40px;
+            width: 100%;
+            display: flex;
+            button {
+                width: 50%;
+                border: none;
+                height: 40px;
+                text-align: center;
+                color: white;
+                font-size: 18px;
+                font-weight: 100;
+                &.active {
+                    background-color: dodgerblue;
+                    font-weight: 400;
+                }
+            }
+        }
+        background-color: white;
+        box-shadow: 2px 0px 9px #222;
+        .stats {
+            position: absolute;
+            color: #333;
+            box-sizing: border-box;
+            padding: 2rem 2rem 1rem 2rem;
+            font-size: 1rem;
+            width: 100%;
+            .fileinput {
+                font-size: 1rem !important;
+                width: 80% !important;
+            }
+        }
+        .settings {
+            padding: 32px 32px 16px 32px;
+            overflow-y: auto;
+            position: absolute;
+            display: none;
+            width: 100%;
+            color: #333;
+            box-sizing: border-box;
+            .imageSizeForm {
+                display: inline-table;
+                line-height: 1.5;
+                input[type="radio"] {
+                    width: auto;
+                    margin-right: 12px;
+                }
+            }
+        }
+    }
+    .content {
+        height: 100%;
+        .render {
+            display: block;
+            margin-top: 36px;
+            height: 70%;
+            background-size: cover;
+            background-color: black;
+            background-repeat: no-repeat;
+        }
+        .exportbutton {
+            font-size: 18px;
+            color: white;
+            font-weight: 200;
+            padding: 5px 20px 5px 20px;
+            background-color: dodgerblue;
+            border: none;
+            display: block;
+            margin: 36px auto;
+            width: 150px;
+            height: 50px;
+        }
+        .pilot {
+            position: fixed;
+            z-index: -2;
+            top: 0;
+            left: 0px;
+            box-sizing: border-box;
+            background-color: white;
+            background: url(../none.jpg) no-repeat center center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            height: 1400px;
+            width: 1111px;
+            background-color: black;
+            .pilotskill {
+                font-size: 100px;
+                color: @pilotskill-orange;
+                margin-left: 162px;
+                margin-top: 145px;
+                text-shadow:  1px  1px 1px black,
+                  1px -1px 1px black,
+                 -1px  1px 1px black,
+                 -1px -1px 1px black;
+                .psbox {
+                    text-align: center;
+                    width: 120px;
+                    border-radius: 6px;
+                    background-color: rgba(0, 0, 0, 0.65);
+                }
+            }
+            .iconbar {
+                width: 800px;
+                margin: 12px auto;
+                text-align: center;
+                font-family: xwing-icons;
+                letter-spacing: 25px;
+                text-indent: 25px;
+                font-size: 50px;
+                z-index: 5;
+            }
+            .pilottext,
+            .shipname,
+            .pilotname {
+                text-align: center;
+                width: 800px;
+                z-index: 5;
+            }
+            .pilottext {
+                margin: 0px auto;
+                width: 800px;
+                text-align: center;
+                font-size: 30px;
+                font-family: sans-serif;
+                font-weight: 300;
+            }
+            .pilotname {
+                margin: 330px auto 0 auto;
+                font-size: 70px;
+                letter-spacing: 2px;
+            }
+            .shipname {
+                margin: 0 auto;
+                font-style: italic;
+                font-size: 45px;
+            }
+            .spacer {
+                flex-grow: 1;
+            }
+            .gradient {
+                box-sizing: border-box;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                padding-top: 600px;
+                height: 100%;
+                background: linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 90%);
+                font-family: xwing-text;
+            }
+            .statscontainer {
+                padding: 5px 0 8px 0px;
+                border-radius: 6px;
+                display: inline-block;
+                box-sizing: border-box;
+                background-color: rgba(0, 0, 0, 0.65);
+                font-size: 53px;
+                margin-top: 2%;
+                margin-left: 162px;
+                width: 120px;
+                text-align: center;
+                font-weight: 300;
+                line-height: 130%;
+                text-shadow:  1px  1px 1px black,
+                  1px -1px 1px black,
+                 -1px  1px 1px black,
+                 -1px -1px 1px black;
+                &.none {
+                    font-size: 70px;
+                    line-height: 120%;
+                    .stat {
+                        text-align: center;
+                        &:before {
+                            content: '' !important;
+                            margin-right: 0 !important;
+                        }
+                    }
+                }
+                .stat {
+                    margin-top: 6%;
+                }
+                .attack {
+                    &:before {
+                        font-family: xwing-icons;
+                        content: "\0025";
+                        font-size: 50px;
+                        margin-right: 5px;
+                    }
+                    color: @attack-red;
+                }
+                .defense {
+                    color: @defense-green;
+                    &:before {
+                        font-family: xwing-icons;
+                        content: "\005e";
+                        font-size: 50px;
+                        margin-right: 5px;
+                    }
+                }
+                .hull {
+                    color: @hull-yellow;
+                    &:before {
+                        font-family: xwing-icons;
+                        content: "\0026";
+                        font-size: 50px;
+                        margin-right: 5px;
+                        margin-bottom: 10px;
+                        position: relative;
+                        top: -5px;
+                        left: 0px;
+                    }
+                }
+                .shields {
+                    color: @shields-blue;
+                    &:before {
+                        font-family: xwing-icons;
+                        content: "\002a";
+                        font-size: 50px;
+                        margin-right: 5px;
+                        position: relative;
+                        top: -7px;
+                    }
+                }
+            }
+        }
+    }
+}

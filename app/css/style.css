@@ -1,0 +1,363 @@
+@font-face {
+  font-family: xwing-icons;
+  src: url('../fonts/xwing-miniatures.ttf');
+}
+@font-face {
+  font-family: xwing-text;
+  src: url('../fonts/xwingfont.ttf');
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  color: white;
+  font-family: sans-serif;
+  background-color: #353535;
+}
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-color: #353535;
+}
+.iconfont {
+  font-family: xwing-icons;
+  font-size: 2rem;
+  text-align: center;
+  display: inline-block;
+  width: 30px;
+}
+.focus,
+.targetlock,
+.barrelroll,
+.boost,
+.cloak,
+.evade,
+.arc,
+.slam {
+  margin: 12px 30px;
+  width: auto !important;
+}
+.focus:before,
+.targetlock:before,
+.barrelroll:before,
+.boost:before,
+.cloak:before,
+.evade:before,
+.arc:before,
+.slam:before {
+  font-size: 1.25rem;
+  font-family: xwing-icons;
+  position: relative;
+  top: -3px;
+  left: -26px;
+}
+.focus:before {
+  content: '\0066';
+}
+.targetlock:before {
+  content: "\006c";
+}
+.barrelroll:before {
+  content: "\0072";
+  left: -29px;
+}
+.boost:before {
+  content: "\0062";
+}
+.evade:before {
+  content: "\0065";
+}
+.cloak:before {
+  content: "\006b";
+}
+.arc:before {
+  content: "R";
+}
+.slam:before {
+  content: "s";
+  left: -22px;
+}
+.main {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.main .sidebar {
+  position: relative;
+  width: 360px;
+  height: 100%;
+  background-color: white;
+  box-shadow: 2px 0px 9px #222;
+}
+.main .sidebar h4 {
+  font-weight: 300;
+}
+.main .sidebar .section {
+  border-top: 2px solid #333;
+  padding-top: 16px;
+}
+.main .sidebar .inputcontainer {
+  margin-bottom: 1rem;
+}
+.main .sidebar .inputcontainer .actions {
+  border-top: 2px solid #333;
+  width: 100%;
+  display: block;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 56px;
+  padding-top: 12px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+.main .sidebar .inputcontainer.flex {
+  display: flex;
+  justify-content: space-around;
+}
+.main .sidebar .inputcontainer input,
+.main .sidebar .inputcontainer textarea {
+  border: 1px solid #333;
+  padding: 3px;
+  font-family: sans-serif;
+}
+.main .sidebar .inputcontainer textarea {
+  width: 100%;
+  resize: vertical;
+}
+.main .sidebar .inputcontainer input {
+  margin-left: 8px;
+  font-size: 1rem;
+  width: 120px;
+}
+.main .sidebar .inputcontainer .shortvalue {
+  width: 50px;
+}
+.main .sidebar .menu {
+  height: 40px;
+  width: 100%;
+  display: flex;
+}
+.main .sidebar .menu button {
+  width: 50%;
+  border: none;
+  height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
+.main .sidebar .menu button.active {
+  background-color: dodgerblue;
+  font-weight: 400;
+}
+.main .sidebar .stats {
+  position: absolute;
+  color: #333;
+  box-sizing: border-box;
+  padding: 2rem 2rem 1rem 2rem;
+  font-size: 1rem;
+  width: 100%;
+}
+.main .sidebar .stats .fileinput {
+  font-size: 1rem !important;
+  width: 80% !important;
+}
+.main .sidebar .settings {
+  padding: 32px 32px 16px 32px;
+  overflow-y: auto;
+  position: absolute;
+  display: none;
+  width: 100%;
+  color: #333;
+  box-sizing: border-box;
+}
+.main .sidebar .settings .imageSizeForm {
+  display: inline-table;
+  line-height: 1.5;
+}
+.main .sidebar .settings .imageSizeForm input[type="radio"] {
+  width: auto;
+  margin-right: 12px;
+}
+.main .content {
+  height: 100%;
+}
+.main .content .render {
+  display: block;
+  margin-top: 36px;
+  height: 70%;
+  background-size: cover;
+  background-color: black;
+  background-repeat: no-repeat;
+}
+.main .content .exportbutton {
+  font-size: 18px;
+  color: white;
+  font-weight: 200;
+  padding: 5px 20px 5px 20px;
+  background-color: dodgerblue;
+  border: none;
+  display: block;
+  margin: 36px auto;
+  width: 150px;
+  height: 50px;
+}
+.main .content .pilot {
+  position: fixed;
+  z-index: -2;
+  top: 0;
+  left: 0px;
+  box-sizing: border-box;
+  background-color: white;
+  background: url(../none.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 1400px;
+  width: 1111px;
+  background-color: black;
+}
+.main .content .pilot .pilotskill {
+  font-size: 100px;
+  color: #f47e20;
+  margin-left: 162px;
+  margin-top: 145px;
+  text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
+}
+.main .content .pilot .pilotskill .psbox {
+  text-align: center;
+  width: 120px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.main .content .pilot .iconbar {
+  width: 800px;
+  margin: 12px auto;
+  text-align: center;
+  font-family: xwing-icons;
+  letter-spacing: 25px;
+  text-indent: 25px;
+  font-size: 50px;
+  z-index: 5;
+}
+.main .content .pilot .pilottext,
+.main .content .pilot .shipname,
+.main .content .pilot .pilotname {
+  text-align: center;
+  width: 800px;
+  z-index: 5;
+}
+.main .content .pilot .pilottext {
+  margin: 0px auto;
+  width: 800px;
+  text-align: center;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+.main .content .pilot .pilotname {
+  margin: 330px auto 0 auto;
+  font-size: 70px;
+  letter-spacing: 2px;
+}
+.main .content .pilot .shipname {
+  margin: 0 auto;
+  font-style: italic;
+  font-size: 45px;
+}
+.main .content .pilot .spacer {
+  flex-grow: 1;
+}
+.main .content .pilot .gradient {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding-top: 600px;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 90%);
+  font-family: xwing-text;
+}
+.main .content .pilot .statscontainer {
+  padding: 5px 0 8px 0px;
+  border-radius: 6px;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.65);
+  font-size: 53px;
+  margin-top: 2%;
+  margin-left: 162px;
+  width: 120px;
+  text-align: center;
+  font-weight: 300;
+  line-height: 130%;
+  text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
+}
+.main .content .pilot .statscontainer.none {
+  font-size: 70px;
+  line-height: 120%;
+}
+.main .content .pilot .statscontainer.none .stat {
+  text-align: center;
+}
+.main .content .pilot .statscontainer.none .stat:before {
+  content: '' !important;
+  margin-right: 0 !important;
+}
+.main .content .pilot .statscontainer .stat {
+  margin-top: 6%;
+}
+.main .content .pilot .statscontainer .attack {
+  color: #f01e44;
+}
+.main .content .pilot .statscontainer .attack:before {
+  font-family: xwing-icons;
+  content: "\0025";
+  font-size: 50px;
+  margin-right: 5px;
+}
+.main .content .pilot .statscontainer .defense {
+  color: #8bce44;
+}
+.main .content .pilot .statscontainer .defense:before {
+  font-family: xwing-icons;
+  content: "\005e";
+  font-size: 50px;
+  margin-right: 5px;
+}
+.main .content .pilot .statscontainer .hull {
+  color: yellow;
+}
+.main .content .pilot .statscontainer .hull:before {
+  font-family: xwing-icons;
+  content: "\0026";
+  font-size: 50px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  position: relative;
+  top: -5px;
+  left: 0px;
+}
+.main .content .pilot .statscontainer .shields {
+  color: #86e3f1;
+}
+.main .content .pilot .statscontainer .shields:before {
+  font-family: xwing-icons;
+  content: "\002a";
+  font-size: 50px;
+  margin-right: 5px;
+  position: relative;
+  top: -7px;
+}
