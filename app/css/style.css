@@ -154,6 +154,7 @@ body {
   color: white;
   font-size: 18px;
   font-weight: 100;
+  outline: none;
 }
 .main .sidebar .menu button.active {
   background-color: dodgerblue;
