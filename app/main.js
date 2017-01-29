@@ -6,8 +6,8 @@ var dialog = electron.dialog;
 
 var mainWindow;
 
-ipc.on('save', (event, arg) => {
-  dialog.showSaveDialog((fileName) => {
+ipc.on('save', function (event, arg) {
+  dialog.showSaveDialog(function (fileName) {
     if (!fileName) {
       return;
     } else {
@@ -15,13 +15,13 @@ ipc.on('save', (event, arg) => {
         fileName += ".png"
       }
     }
-    require("fs").writeFile(fileName, arg, 'base64', (err) => {
+    require("fs").writeFile(fileName, arg, 'base64', function (err) {
       console.log(err);
     });
   });
 });
 
-app.on('ready', () => {
+app.on('ready', function () {
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -39,7 +39,7 @@ app.on('ready', () => {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', () => {
+  mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.

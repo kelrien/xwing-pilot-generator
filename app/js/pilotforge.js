@@ -19,14 +19,14 @@ function saveImage() {
     ipc.send('save', imageData);
 }
 
-$(() => {
+$(function () {
 
-    $(window).resize(() => {
+    $(window).resize(function () {
         var elem = $('#render')
         elem.width(elem.height() * magicRatio);
     });
 
-    $('.statsbutton').click(() => {
+    $('.statsbutton').click(function () {
         if (!$(this).hasClass("active")) {
             $(this).addClass("active");
             $('.settingsbutton').removeClass("active");
@@ -35,7 +35,7 @@ $(() => {
         }
     });
 
-    $('.settingsbutton').click(() => {
+    $('.settingsbutton').click(function () {
         if (!$(this).hasClass("active")) {
             $(this).addClass("active");
             $('.statsbutton').removeClass("active");
@@ -47,10 +47,10 @@ $(() => {
     pilotcard = $('#pilot');
     exportPng();
 
-    $('input').change(() => {
+    $('input').change(function () {
         redraw(this);
     });
-    $('#name, textarea').change(() => {
+    $('#name, textarea').change(function () {
         redraw(this);
     });
 });
@@ -155,7 +155,7 @@ function redraw(item) {
             var reader = new FileReader();
             var file = item[0].files[0];
 
-            reader.addEventListener("load", () => {
+            reader.addEventListener("load", function () {
                 $("." + item.attr("name"))
                     .css("background-image", "url(" + reader.result + ")");
                 originalImage = reader.result;
@@ -193,7 +193,7 @@ function redraw(item) {
             exportPng();
             break;
 
-        case "staticons": {
+        case "staticons":{
             var stats = $('.statscontainer')
             item[0].checked ? stats.removeClass("none") : stats.addClass("none");
             exportPng();
@@ -209,12 +209,12 @@ function redraw(item) {
 function exportPng() {
     var node = document.getElementById('pilot');
     domtoimage.toPng(node)
-        .then((dataUrl) => {
+        .then(function (dataUrl) {
             var width = $('#render').height() * magicRatio + "px"
             $('#render').css("background-image", 'url(' + dataUrl + ')')
                 .css("width", width);
         })
-        .catch((error) => {
+        .catch(function (error) {
             error('oops, something went wrong!', error);
         });
 }
