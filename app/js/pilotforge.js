@@ -55,6 +55,7 @@ $(function () {
     });
 });
 
+//CODE SMELL - NEEDS REFACTOING (FUNCTION TOO LONG)
 function redraw(item) {
     item = $(item);
     switch (item.attr("name")) {
