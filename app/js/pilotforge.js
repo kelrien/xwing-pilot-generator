@@ -194,7 +194,7 @@ function redraw(item) {
             exportPng();
             break;
 
-        case "staticons":{
+        case "staticons": {
             var stats = $('.statscontainer')
             item[0].checked ? stats.removeClass("none") : stats.addClass("none");
             exportPng();
