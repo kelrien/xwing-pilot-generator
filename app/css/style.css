@@ -218,7 +218,7 @@ body {
   left: 0px;
   box-sizing: border-box;
   background-color: white;
-  background: url(../none.jpg) no-repeat center center;
+  background: no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

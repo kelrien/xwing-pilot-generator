@@ -60,6 +60,11 @@ var app = new Vue({
             var width = document.getElementById('render').clientHeight * magicRatio + "px";
             $('#render').css("width", width);
         },
+        saveImage: function () {
+            var ipc = require('electron').ipcRenderer;
+            var imageData = $('#render').css('background-image').split(',')[1];
+            ipc.send('save', imageData);
+        },
         _createCanvas: function () {
             var that = this;
             var node = document.getElementById('pilot');
@@ -87,5 +92,8 @@ var app = new Vue({
     },
     mounted: function () {
         this._createCanvas();
+        window.addEventListener('resize', (event) => {
+            this.resizePreview();
+        })
     }
 })

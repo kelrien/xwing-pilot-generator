@@ -109,8 +109,8 @@
                 </div>
             </div>
             <div class="content">
-                <div id="render" class="render" src="none.png"></div>
-                <button onclick="saveImage()" class="exportbutton">Save Card</button>
+                <div id="render" class="render" src=""></div>
+                <button v-on:click="saveImage()" class="exportbutton">Save Card</button>
                 <div id="pilot" class=" pilot">
                     <div class=" pilotskill">
                         <div v-bind:style="{ backgroundColor: card.imageSettings.psFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" 
