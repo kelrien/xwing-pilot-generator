@@ -51,6 +51,10 @@
                         </div>
                     </div>
                     <div class="inputcontainer">
+                        <Span>Card text</Span><br />
+                        <textarea v-model="card.cardtext" name="pilottext" rows="5" cols=""></textarea>
+                    </div>
+                    <div class="inputcontainer">
                         <Span>Actions</Span><br />
                         <div class="actions">
                             <input type="checkbox" v-model="card.actions.focus" class="focus shortvalue" />
@@ -62,10 +66,6 @@
                             <input type="checkbox" v-model="card.actions.arc" class="arc shortvalue" />
                             <input type="checkbox" v-model="card.actions.slam" class="slam shortvalue" />
                         </div>
-                    </div>
-                    <div class=" inputcontainer">
-                        <Span>Card text</Span><br />
-                        <textarea v-model="card.cardtext" name="pilottext" rows="5" cols=""></textarea>
                     </div>
                     <div class=" inputcontainer">
                         <div>Artwork</div>
@@ -92,13 +92,17 @@
                         <h4>Layout Options</h4>
                         <div class="section">
                             <div class="inputcontainer">
-                                <span>Statistics box</span> <input checked type="checkbox" name="statframe" />
+                                <span>Statistics box</span> 
+                                <input v-model="card.imageSettings.statFrame"
+                                type="checkbox" name="statframe" />
                             </div>
                             <div class="inputcontainer">
-                                <span>Statistics icons</span> <input checked type="checkbox" name="staticons" />
+                                <span>Statistics icons</span> 
+                                <input v-model="card.imageSettings.statIcons" type="checkbox" name="staticons" />
                             </div>
                             <div class="inputcontainer">
-                                <span>Pilotskill box</span> <input checked type="checkbox" name="psframe" />
+                                <span>Pilotskill box</span> 
+                                <input v-model="card.imageSettings.psFrame" type="checkbox" name="psframe" />
                             </div>
                         </div>
                     </div>
@@ -109,17 +113,19 @@
                 <button onclick="saveImage()" class="exportbutton">Save Card</button>
                 <div id="pilot" class=" pilot">
                     <div class=" pilotskill">
-                        <div class="psbox">{{ card.stats.pilotskill }}</div>
+                        <div v-bind:style="{ backgroundColor: card.imageSettings.psFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" 
+                             class="psbox">{{ card.stats.pilotskill }}</div>
                     </div>
-                    <div class="statscontainer">
+                    <div v-bind:style="{ backgroundColor: card.imageSettings.statFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }"
+                         v-bind:class="{ none: !card.imageSettings.statIcons }" class="statscontainer">
                         <div class="attack stat"> {{ card.stats.attack }} </div>
                         <div class="defense stat"> {{ card.stats.defense }} </div>
                         <div class="hull stat"> {{ card.stats.hull }} </div>
                         <div class="shields stat"> {{ card.stats.shields }} </div>
                     </div>
                     <div class="gradient">
-                        <div class=" pilotname">{{ card.pilotname }}</div>
-                        <div class=" shipname">{{ card.ship }}</div>
+                        <div class="pilotname">{{ card.pilotname }}</div>
+                        <div class="shipname">{{ card.ship }}</div>
                         <div id="iconbar" class="iconbar">
                             <span v-if="card.actions.focus">f</span>
                             <span v-if="card.actions.targetlock">l</span>

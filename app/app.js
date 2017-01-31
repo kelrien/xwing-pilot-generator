@@ -19,6 +19,11 @@ var app = new Vue({
                 shields: "1",
                 hull: "1"
             },
+            imageSettings: {
+                statFrame: true,
+                psFrame: true,
+                statIcons: true
+            },
             file: "",
             originalImage: "",
             renderedImage: "",
@@ -59,26 +64,28 @@ var app = new Vue({
             var that = this;
             var node = document.getElementById('pilot');
             domtoimage.toPng(node)
-                .then(function (dataUrl) {
+                .then((dataUrl) => {
                     $('#render').css("background-image", 'url(' + dataUrl + ')');
                     that.resizePreview();
                 })
-                .catch(function (error) {
+                .catch((error) => {
                     console.error('oops, something went wrong!', error);
                 });
         },
         readImage: function (event) {
             var reader = new FileReader();
             var file = event.target.files[0];
+            if (file) {
+                reader.readAsDataURL(file);
+            }
             reader.addEventListener("load", function () {
                 $(".pilot")
                     .css("background-image", "url(" + reader.result + ")");
                 this.$data.card.originalImage = reader.result;
             }.bind(this), false);
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
         }
+    },
+    mounted: function () {
+        this._createCanvas();
     }
 })
