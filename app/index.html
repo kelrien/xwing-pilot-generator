@@ -1,88 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
-        <link href="css/style.css" rel="stylesheet">
-        <script src="js/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <!--<script src="js/pilotforge.js"></script>-->
-        <script src="js/dom-to-image.min.js"></script>
-        <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    </head>
-    <body>
-        <div id="main" class="main">
-            <div class="overlay"></div>
-            <div class=" sidebar">
-                <div class="menu">
-                    <button v-on:click="statsVisible = true" v-bind:class="{active: statsVisible}" class="statsbutton">Stats</button>
-                    <button v-on:click="statsVisible = false" v-bind:class="{active: !statsVisible}" class="settingsbutton">Settings</button>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!--<script src="js/pilotforge.js"></script>-->
+    <script src="js/dom-to-image.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="main" class="main">
+        <div class="overlay"></div>
+        <div class=" sidebar">
+            <div class="menu">
+                <button v-on:click="statsVisible = true" v-bind:class="{active: statsVisible}" class="statsbutton">Stats</button>
+                <button v-on:click="statsVisible = false" v-bind:class="{active: !statsVisible}" class="settingsbutton">Settings</button>
+            </div>
+            <div v-if="statsVisible" class="stats">
+                <div class="inputcontainer">
+                    <Span>Name</Span>
+                    <input v-model="card.pilotname" style="width: 224px;" v-model="card.pilotname" type="text" name="pilotname">
                 </div>
-                <div v-if="statsVisible" class="stats">
-                    <div class="inputcontainer">
-                        <Span>Name</Span>
-                        <input v-model="card.pilotname" style="width: 224px;" v-model="card.pilotname" type="text" name="pilotname">
+                <div class="inputcontainer">
+                    <Span>Ship</Span>
+                    <input id="name" v-model="card.ship" style="width: 126px !important; margin-left: 22px;" type="text" name="shipname">
+                    <Span>PS</Span>
+                    <input v-model="card.stats.pilotskill" class="shortvalue" type="number" min="1" name="psbox">
+                </div>
+                <div style="margin-top: 36px !important;" class=" inputcontainer flex">
+                    <div>
+                        <Span class="iconfont">%</Span>
+                        <input v-model="card.stats.attack" class=" shortvalue" type="number" min="1" name="attack">
                     </div>
-                    <div class="inputcontainer">
-                        <Span>Ship</Span>
-                        <input id="name" v-model="card.ship" style="width: 126px !important; margin-left: 22px;" type="text" name="shipname" >
-                        <Span>PS</Span>
-                        <input v-model="card.stats.pilotskill" class="shortvalue" type="number" min="1" name="psbox">
-                    </div>
-                    <div style="margin-top: 36px !important;" class=" inputcontainer flex">
-                        <div>
-                            <Span class="iconfont">%</Span>
-                            <input v-model="card.stats.attack" class=" shortvalue" type="number" min="1" name="attack">
-                        </div>
-                        <div>
-                            <Span class=" iconfont">^</Span>
-                            <input v-model="card.stats.defense" class=" shortvalue" type="number" min="1" name="defense">
-                        </div>
-                    </div>
-                    <div style="margin-bottom: 36px;" class=" inputcontainer flex">
-                        <div>
-                            <Span class=" iconfont">&amp;</Span>
-                            <input v-model="card.stats.hull" class="shortvalue" type="number" min="1" name="hull">
-                        </div>
-                        <div>
-                            <Span class=" iconfont">*</Span>
-                            <input v-model="card.stats.shields" class="shortvalue" type="number" min="1" name="shields">
-                        </div>
-                    </div>
-                    <div class="inputcontainer">
-                        <Span>Card text</Span><br />
-                        <textarea v-model="card.cardtext" name="pilottext" rows="5" cols=""></textarea>
-                    </div>
-                    <div class="inputcontainer">
-                        <Span>Actions</Span><br />
-                        <div class="actions">
-                            <input type="checkbox" v-model="card.actions.focus" class="focus shortvalue" />
-                            <input type="checkbox" v-model="card.actions.targetlock" class="targetlock shortvalue" />
-                            <input type="checkbox" v-model="card.actions.barrelroll" class="barrelroll shortvalue" />
-                            <input type="checkbox" v-model="card.actions.boost" class="boost shortvalue" />
-                            <input type="checkbox" v-model="card.actions.cloak" class="cloak shortvalue" />
-                            <input type="checkbox" v-model="card.actions.evade" class="evade shortvalue" />
-                            <input type="checkbox" v-model="card.actions.arc" class="arc shortvalue" />
-                            <input type="checkbox" v-model="card.actions.slam" class="slam shortvalue" />
-                        </div>
-                    </div>
-                    <div class=" inputcontainer">
-                        <div>Artwork</div>
-                        <img id="preview" width="100%" class=" preview" />
-                        <input class="fileinput" name="pilot" v-on:change="readImage" type="file">
+                    <div>
+                        <Span class=" iconfont">^</Span>
+                        <input v-model="card.stats.defense" class=" shortvalue" type="number" min="1" name="defense">
                     </div>
                 </div>
-                <div v-if="!statsVisible" class="settings">
-                    <div class=" options">
-                        <h4>Image Options</h4>
-                        <div class="section">
-                            <!-- Flip Image, Size Adjustment, position adjustments, boxes / backgrounds for texts --!>
-                            <div class="inputcontainer">
-                                <span>Gradient</span> <input checked type="checkbox" name="gradient" />
-                            </div>
-                            <div class="inputcontainer">
-                                <span>Image Size<span> 
+                <div style="margin-bottom: 36px;" class=" inputcontainer flex">
+                    <div>
+                        <Span class=" iconfont">&amp;</Span>
+                        <input v-model="card.stats.hull" class="shortvalue" type="number" min="1" name="hull">
+                    </div>
+                    <div>
+                        <Span class=" iconfont">*</Span>
+                        <input v-model="card.stats.shields" class="shortvalue" type="number" min="1" name="shields">
+                    </div>
+                </div>
+                <div class="inputcontainer">
+                    <Span>Card text</Span><br />
+                    <textarea v-model="card.cardtext" name="pilottext" rows="5" cols=""></textarea>
+                </div>
+                <div class="inputcontainer">
+                    <Span>Actions</Span><br />
+                    <div class="actions">
+                        <input type="checkbox" v-model="card.actions.focus" class="focus shortvalue" />
+                        <input type="checkbox" v-model="card.actions.targetlock" class="targetlock shortvalue" />
+                        <input type="checkbox" v-model="card.actions.barrelroll" class="barrelroll shortvalue" />
+                        <input type="checkbox" v-model="card.actions.boost" class="boost shortvalue" />
+                        <input type="checkbox" v-model="card.actions.cloak" class="cloak shortvalue" />
+                        <input type="checkbox" v-model="card.actions.evade" class="evade shortvalue" />
+                        <input type="checkbox" v-model="card.actions.arc" class="arc shortvalue" />
+                        <input type="checkbox" v-model="card.actions.slam" class="slam shortvalue" />
+                    </div>
+                </div>
+                <div class=" inputcontainer">
+                    <div>Artwork</div>
+                    <img id="preview" width="100%" class=" preview" />
+                    <input class="fileinput" name="pilot" v-on:change="readImage" type="file">
+                </div>
+            </div>
+            <div v-if="!statsVisible" class="settings">
+                <div class=" options">
+                    <h4>Image Options</h4>
+                    <div class="section">
+                        <!-- Flip Image, Size Adjustment, position adjustments, boxes / backgrounds for texts -->
+                        <div class="inputcontainer">
+                            <span>Gradient</span> <input checked type="checkbox" name="gradient" />
+                        </div>
+                        <div class="inputcontainer">
+                            <span>Image Size<span> 
                                 <form class="imageSizeForm">
                                     <input type="radio" class="shortvalue" name="imagesize" value="auto"> Auto <br>
                                     <input type="radio" class="shortvalue" name="imagesize" value="manual"> Custom <br>
@@ -92,55 +99,53 @@
                         <h4>Layout Options</h4>
                         <div class="section">
                             <div class="inputcontainer">
-                                <span>Statistics box</span> 
-                                <input v-model="card.imageSettings.statFrame"
-                                type="checkbox" name="statframe" />
-                            </div>
-                            <div class="inputcontainer">
-                                <span>Statistics icons</span> 
-                                <input v-model="card.imageSettings.statIcons" type="checkbox" name="staticons" />
-                            </div>
-                            <div class="inputcontainer">
-                                <span>Pilotskill box</span> 
-                                <input v-model="card.imageSettings.psFrame" type="checkbox" name="psframe" />
-                            </div>
+                                <span>Statistics box</span>
+                            <input v-model="card.imageSettings.statFrame" type="checkbox" name="statframe" />
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
-                <div id="render" class="render" src=""></div>
-                <button v-on:click="saveImage()" class="exportbutton">Save Card</button>
-                <div id="pilot" class=" pilot">
-                    <div class=" pilotskill">
-                        <div v-bind:style="{ backgroundColor: card.imageSettings.psFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" 
-                             class="psbox">{{ card.stats.pilotskill }}</div>
-                    </div>
-                    <div v-bind:style="{ backgroundColor: card.imageSettings.statFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }"
-                         v-bind:class="{ none: !card.imageSettings.statIcons }" class="statscontainer">
-                        <div class="attack stat"> {{ card.stats.attack }} </div>
-                        <div class="defense stat"> {{ card.stats.defense }} </div>
-                        <div class="hull stat"> {{ card.stats.hull }} </div>
-                        <div class="shields stat"> {{ card.stats.shields }} </div>
-                    </div>
-                    <div class="gradient">
-                        <div class="pilotname">{{ card.pilotname }}</div>
-                        <div class="shipname">{{ card.ship }}</div>
-                        <div id="iconbar" class="iconbar">
-                            <span v-if="card.actions.focus">f</span>
-                            <span v-if="card.actions.targetlock">l</span>
-                            <span v-if="card.actions.barrelroll">r</span>
-                            <span v-if="card.actions.boost">b</span>
-                            <span v-if="card.actions.cloak">k</span>
-                            <span v-if="card.actions.evade">e</span>
-                            <span v-if="card.actions.arc">R</span>
-                            <span v-if="card.actions.slam">s</span>
+                        <div class="inputcontainer">
+                            <span>Statistics icons</span>
+                            <input v-model="card.imageSettings.statIcons" type="checkbox" name="staticons" />
                         </div>
-                        <div class="pilottext">{{ card.cardtext }}</div>
+                        <div class="inputcontainer">
+                            <span>Pilotskill box</span>
+                            <input v-model="card.imageSettings.psFrame" type="checkbox" name="psframe" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="app.js"></script>
-    </body>
+        <div class="content">
+            <div id="render" class="render" src=""></div>
+            <button v-on:click="saveImage()" class="exportbutton">Save Card</button>
+            <div id="pilot" class=" pilot">
+                <div class=" pilotskill">
+                    <div v-bind:style="{ backgroundColor: card.imageSettings.psFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" class="psbox">{{ card.stats.pilotskill }}</div>
+                </div>
+                <div v-bind:style="{ backgroundColor: card.imageSettings.statFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" v-bind:class="{ none: !card.imageSettings.statIcons }" class="statscontainer">
+                    <div class="attack stat"> {{ card.stats.attack }} </div>
+                    <div class="defense stat"> {{ card.stats.defense }} </div>
+                    <div class="hull stat"> {{ card.stats.hull }} </div>
+                    <div class="shields stat"> {{ card.stats.shields }} </div>
+                </div>
+                <div class="gradient">
+                    <div class="pilotname">{{ card.pilotname }}</div>
+                    <div class="shipname">{{ card.ship }}</div>
+                    <div id="iconbar" class="iconbar">
+                        <span v-if="card.actions.focus">f</span>
+                        <span v-if="card.actions.targetlock">l</span>
+                        <span v-if="card.actions.barrelroll">r</span>
+                        <span v-if="card.actions.boost">b</span>
+                        <span v-if="card.actions.cloak">k</span>
+                        <span v-if="card.actions.evade">e</span>
+                        <span v-if="card.actions.arc">R</span>
+                        <span v-if="card.actions.slam">s</span>
+                    </div>
+                    <div class="pilottext">{{ card.cardtext }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
 </html>
