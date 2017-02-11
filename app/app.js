@@ -22,7 +22,14 @@ var app = new Vue({
             imageSettings: {
                 statFrame: true,
                 psFrame: true,
-                statIcons: true
+                statIcons: true,
+                imageSize: "auto"
+            },
+            layoutSettings: {
+                xOffset: 50,
+                yOffset: 50,
+                xSize: 50,
+                ySize: 50
             },
             file: "",
             originalImage: "",
@@ -34,11 +41,32 @@ var app = new Vue({
         statsVisible: true
     },
     watch: {
-        card: {
+        "card.actions": {
             handler: function (newVal, oldVal) {
                 this.renderPreview();
             },
             deep: true
+        },
+        "card.stats": {
+            handler: function (newVal, oldVal) {
+                this.renderPreview();
+            },
+            deep: true
+        },
+        "card.ship": {
+            handler: function(){
+                this.renderPreview();
+            }
+        },
+        "card.pilotname": {
+            handler: function(){
+                this.renderPreview()
+            }
+        },
+        "card.cardtext": {
+            handler: function(){
+                this.renderPreview();
+            }
         }
     },
     methods: {
@@ -70,7 +98,8 @@ var app = new Vue({
             var node = document.getElementById('pilot');
             domtoimage.toPng(node)
                 .then((dataUrl) => {
-                    $('#render').css("background-image", 'url(' + dataUrl + ')');
+                    // $('#render').css("background-image", 'url(' + dataUrl + ')');
+                    this.$data.card.renderedImage = dataUrl;
                     that.resizePreview();
                 })
                 .catch((error) => {
@@ -87,6 +116,7 @@ var app = new Vue({
                 $(".pilot")
                     .css("background-image", "url(" + reader.result + ")");
                 this.$data.card.originalImage = reader.result;
+                this.renderPreview();
             }.bind(this), false);
         }
     },
