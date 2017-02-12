@@ -40,6 +40,7 @@ var app = new Vue({
         },
         statsVisible: true
     },
+    // MAKE THE PREVIEW IMAGE A DIFFERENT FROM THE RENDERPREVIEW AND SWAP THEM ON THE RENDER BUTTON CLICK
     watch: {
         "card.actions": {
             handler: function (newVal, oldVal) {
