@@ -129,7 +129,7 @@
          </div>
          <div class="content">        
             <div id="render" v-bind:style="{ 'background-image': 'url(' + card.renderedImage + ')' }" class="render">
-                <div v-if="card.imageSettings.imageSize === 'manual'" v-bind:style="{ 'background-image': 'url(' + card.originalImage + ')', 'background-size': card.layoutSettings.xSize+'% ' + card.layoutSettings.ySize +'%', 'background-position-x': card.layoutSettings.xOffset + '%', 'background-position-y': card.layoutSettings.yOffset + '%'}"
+                <div id="manualImage" v-if="card.imageSettings.imageSize === 'manual'" v-bind:style="{'background-image': 'url(' + card.originalImage + ')', 'background-size': card.layoutSettings.xSize+'% ' + card.layoutSettings.ySize +'%', 'background-position-x': card.layoutSettings.xOffset + '%', 'background-position-y': card.layoutSettings.yOffset + '%'}"
                class="manualImage"></div>
             </div>
             <button v-on:click="saveImage()" class="exportbutton">Save Card</button>

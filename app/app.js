@@ -38,7 +38,8 @@ var app = new Vue({
             pilotname: "Name of your Pilot",
             cardtext: "Rules here!"
         },
-        statsVisible: true
+        statsVisible: true,
+        customVisible: false
     },
     // MAKE THE PREVIEW IMAGE A DIFFERENT FROM THE RENDERPREVIEW AND SWAP THEM ON THE RENDER BUTTON CLICK
     watch: {
@@ -97,6 +98,19 @@ var app = new Vue({
         _createCanvas: function () {
             var that = this;
             var node = document.getElementById('pilot');
+            domtoimage.toPng(node)
+                .then((dataUrl) => {
+                    // $('#render').css("background-image", 'url(' + dataUrl + ')');
+                    this.$data.card.renderedImage = dataUrl;
+                    that.resizePreview();
+                })
+                .catch((error) => {
+                    console.error('oops, something went wrong!', error);
+                });
+        },
+        renderManualImage: function(){
+            var that = this;
+            var node = document.getElementById('manualImage');
             domtoimage.toPng(node)
                 .then((dataUrl) => {
                     // $('#render').css("background-image", 'url(' + dataUrl + ')');
