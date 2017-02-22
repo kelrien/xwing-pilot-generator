@@ -84,6 +84,18 @@ body {
   content: "s";
   left: -22px;
 }
+.exportbutton {
+  font-size: 18px;
+  color: white;
+  font-weight: 200;
+  padding: 5px 20px 5px 20px;
+  background-color: dodgerblue;
+  border: none;
+  display: block;
+  margin: 36px auto;
+  width: 150px;
+  height: 50px;
+}
 .main {
   height: 100%;
   display: flex;
@@ -188,28 +200,28 @@ body {
   width: auto;
   margin-right: 12px;
 }
+.main .sidebar .settings .imageNumberSetting {
+  display: inline-block;
+  width: 75px;
+  text-align: right;
+}
 .main .content {
   height: 100%;
 }
 .main .content .render {
+  position: relative;
   display: block;
   margin-top: 36px;
   height: 70%;
-  background-size: cover;
+  background-size: 100% 100%;
   background-color: black;
-  background-repeat: no-repeat;
 }
-.main .content .exportbutton {
-  font-size: 18px;
-  color: white;
-  font-weight: 200;
-  padding: 5px 20px 5px 20px;
-  background-color: dodgerblue;
-  border: none;
-  display: block;
-  margin: 36px auto;
-  width: 150px;
-  height: 50px;
+.main .content .render .manualImage {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
 }
 .main .content .pilot {
   position: fixed;
