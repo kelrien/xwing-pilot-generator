@@ -23,7 +23,8 @@ var app = new Vue({
                 statFrame: true,
                 psFrame: true,
                 statIcons: true,
-                imageSize: "auto"
+                imageSize: "auto",
+                gradient: true
             },
             layoutSettings: {
                 xOffset: 50,
@@ -66,6 +67,11 @@ var app = new Vue({
             }
         },
         "card.cardtext": {
+            handler: function(){
+                this.renderPreview();
+            }
+        },
+        "card.imageSettings.gradient": {
             handler: function(){
                 this.renderPreview();
             }

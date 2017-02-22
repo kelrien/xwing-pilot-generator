@@ -80,7 +80,7 @@
                   <div class="section">
                      <!-- Flip Image, Size Adjustment, position adjustments, boxes / backgrounds for texts -->
                      <div class="inputcontainer">
-                        <span>Gradient</span> <input checked type="checkbox" name="gradient" />
+                        <span>Gradient</span> <input v-model="card.imageSettings.gradient" type="checkbox" name="gradient" />
                      </div>
                      <div class="inputcontainer">
                         <span>Image Size</span>
@@ -144,7 +144,7 @@
                   <div class="hull stat"> {{ card.stats.hull }} </div>
                   <div class="shields stat"> {{ card.stats.shields }} </div>
                </div>
-               <div class="gradient">
+               <div v-bind:class="{gradientVisible: card.imageSettings.gradient}" class="gradient">
                   <div class="pilotname">{{ card.pilotname }}</div>
                   <div class="shipname">{{ card.ship }}</div>
                   <div id="iconbar" class="iconbar">
