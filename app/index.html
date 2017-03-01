@@ -111,7 +111,7 @@
                                     <input v-model="card.layoutSettings.yOffset" class="shortvalue" type="number" min="-100">
                                 </div>
                             </div>
-                            <button class="exportbutton">Render</button>
+                            <button v-on:click="renderManualImage()" class="exportbutton">Render</button>
                         </div>
                         <h4>Layout Options</h4>
                         <div class="section">
@@ -134,7 +134,7 @@
         </div>
         <div class="content">
             <div id="render" v-bind:style="{ 'background-image': 'url(' + card.renderedImage + ')' }" class="render">
-                <div id="manualImage" v-if="card.imageSettings.imageSize === 'manual'" v-bind:style="{'background-image': 'url(' + card.originalImage + ')', 'background-size': card.layoutSettings.xSize+'% ' + card.layoutSettings.ySize +'%', 'background-position-x': card.layoutSettings.xOffset + '%', 'background-position-y': card.layoutSettings.yOffset + '%'}"
+                <div id="manualImage" v-if="manualImageVisible" v-bind:style="{'background-image': 'url(' + card.originalImage + ')', 'background-size': card.layoutSettings.xSize+'% ' + card.layoutSettings.ySize +'%', 'background-position-x': card.layoutSettings.xOffset + '%', 'background-position-y': card.layoutSettings.yOffset + '%'}"
                     class="manualImage"></div>
             </div>
             <button v-on:click="saveImage()" class="exportbutton">Save Card</button>
