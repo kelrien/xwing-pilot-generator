@@ -50,6 +50,11 @@ var app = new Vue({
             },
             deep: true
         },
+        "statsVisible": {
+            handler: function (newVal, oldVal) {
+                this.renderManualImage();
+            }
+        },
         "card.stats": {
             handler: function (newVal, oldVal) {
                 this.renderPreview();
@@ -57,23 +62,28 @@ var app = new Vue({
             deep: true
         },
         "card.ship": {
-            handler: function(){
+            handler: function () {
                 this.renderPreview();
             }
         },
         "card.pilotname": {
-            handler: function(){
+            handler: function () {
                 this.renderPreview()
             }
         },
         "card.cardtext": {
-            handler: function(){
+            handler: function () {
                 this.renderPreview();
             }
         },
         "card.imageSettings.gradient": {
-            handler: function(){
+            handler: function () {
                 this.renderPreview();
+            }
+        },
+        "card.imageSettings.imageSize": {
+            handler: function () {
+                this.card.renderedImage = "";
             }
         }
     },
@@ -114,18 +124,12 @@ var app = new Vue({
                     console.error('oops, something went wrong!', error);
                 });
         },
-        renderManualImage: function(){
+        renderManualImage: function () {
             var that = this;
-            var node = document.getElementById('manualImage');
-            domtoimage.toPng(node)
-                .then((dataUrl) => {
-                    // $('#render').css("background-image", 'url(' + dataUrl + ')');
-                    this.$data.card.renderedImage = dataUrl;
-                    that.resizePreview();
-                })
-                .catch((error) => {
-                    console.error('oops, something went wrong!', error);
-                });
+            var manualImage = document.getElementById('manualImage');
+            pilot.setAttribute("style", manualImage.style.cssText);
+            this.card.imageSettings.imageSize = "auto";
+            this._createCanvas();
         },
         readImage: function (event) {
             var reader = new FileReader();

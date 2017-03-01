@@ -111,7 +111,7 @@
                                     <input v-model="card.layoutSettings.yOffset" class="shortvalue" type="number" min="-100">
                                 </div>
                             </div>
-                            <button class="exportbutton">Render</button>
+                            <button v-on:click="renderManualImage()" class="exportbutton">Render</button>
                         </div>
                         <h4>Layout Options</h4>
                         <div class="section">
