@@ -104,7 +104,11 @@ var app = new Vue({
         "card.imageSettings": {
             handler: function () {
                 if (this.card.imageSettings.imageSize === 'manual') {
-                    this.rendered = false;
+                    if (this.rendered) {
+                        this.renderPreview();
+                    } else {
+                        this.renderManualImage();
+                    }
                 }
             },
             deep: true
