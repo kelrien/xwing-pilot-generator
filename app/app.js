@@ -87,7 +87,7 @@ var app = new Vue({
                 debugger;
                 if (newVal == "manual") {
                     this.card.renderedImage = "";
-                }else{
+                } else {
                     var node = document.getElementById('pilot');
                     node.style.backgroundSize = "cover";
                     this._createCanvas();
@@ -98,6 +98,14 @@ var app = new Vue({
             handler: function () {
                 this.card.renderedImage = "";
                 this.rendered = false;
+            },
+            deep: true
+        },
+        "card.imageSettings": {
+            handler: function () {
+                if (this.card.imageSettings.imageSize === 'manual') {
+                    this.rendered = false;
+                }
             },
             deep: true
         }
