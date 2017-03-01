@@ -238,7 +238,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 1400px;
-  width: 1111px;
+  width: 1000px;
   background-color: black;
 }
 .main .content .pilot .pilotskill {
@@ -314,7 +314,7 @@ body {
   margin-top: 2%;
   margin-left: 162px;
   width: 140px;
-  text-align: left;
+  text-align: justify;
   font-weight: 300;
   line-height: 130%;
   text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
@@ -324,7 +324,7 @@ body {
   line-height: 120%;
 }
 .main .content .pilot .statscontainer.none .stat {
-  text-align: center;
+  text-align: justify;
 }
 .main .content .pilot .statscontainer.none .stat:before {
   content: '' !important;
