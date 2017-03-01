@@ -40,7 +40,8 @@ var app = new Vue({
             cardtext: "Rules here!"
         },
         statsVisible: true,
-        customVisible: false
+        customVisible: false,
+        rendered: false
     },
     // MAKE THE PREVIEW IMAGE A DIFFERENT FROM THE RENDERPREVIEW AND SWAP THEM ON THE RENDER BUTTON CLICK
     watch: {
@@ -82,9 +83,28 @@ var app = new Vue({
             }
         },
         "card.imageSettings.imageSize": {
+            handler: function (newVal) {
+                debugger;
+                if (newVal == "manual") {
+                    this.card.renderedImage = "";
+                }else{
+                    var node = document.getElementById('pilot');
+                    node.style.backgroundSize = "cover";
+                    this._createCanvas();
+                }
+            }
+        },
+        "card.layoutSettings": {
             handler: function () {
                 this.card.renderedImage = "";
-            }
+                this.rendered = false;
+            },
+            deep: true
+        }
+    },
+    computed: {
+        manualImageVisible: function () {
+            return !this.rendered && this.card.imageSettings.imageSize == "manual";
         }
     },
     methods: {
@@ -125,10 +145,14 @@ var app = new Vue({
                 });
         },
         renderManualImage: function () {
+            if (this.rendered) {
+                return;
+            }
             var that = this;
             var manualImage = document.getElementById('manualImage');
             pilot.setAttribute("style", manualImage.style.cssText);
-            this.card.imageSettings.imageSize = "auto";
+            debugger;
+            this.rendered = true;
             this._createCanvas();
         },
         readImage: function (event) {
