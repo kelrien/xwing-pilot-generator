@@ -1,3 +1,5 @@
+var magicRatio = 0.71428571428;
+
 var app = new Vue({
     el: '#main',
     data: {
@@ -134,7 +136,6 @@ var app = new Vue({
             }
         },
         resizePreview: function () {
-            var magicRatio = 0.71428571428;
             var width = document.getElementById('render').clientHeight * magicRatio + "px";
             $('#render').css("width", width);
         },
