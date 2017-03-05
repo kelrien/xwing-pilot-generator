@@ -85,13 +85,14 @@
                     <div class="section">
                         <!-- Flip Image, Size Adjustment, position adjustments, boxes / backgrounds for texts -->
                         <div class="inputcontainer">
-                            <span>Gradient</span> <input v-model="card.imageSettings.gradient" type="checkbox" name="gradient" />
+                            <span>Gradient</span> <input v-model="card.imageSettings.gradient" type="checkbox" name="gradient"
+                            />
                         </div>
                         <div class="inputcontainer">
                             <span>Image Size</span>
                             <form class="imageSizeForm">
-                                <input type="radio" v-model="card.imageSettings.imageSize" class="shortvalue" name="imagesize" value="auto"> Auto <br>
-                                <input type="radio" v-model="card.imageSettings.imageSize" class="shortvalue" name="imagesize" value="manual"> Custom <br>
+                                <input type="radio" v-model="card.imageSettings.imageSize" class="shortvalue" name="imagesize" value="auto">                                Auto <br>
+                                <input type="radio" v-model="card.imageSettings.imageSize" class="shortvalue" name="imagesize" value="manual">                                Custom <br>
                             </form>
                         </div>
                         <div v-if="card.imageSettings.imageSize === 'manual'">
@@ -109,6 +110,12 @@
                                     <input v-model="card.layoutSettings.xOffset" class="shortvalue" type="number" min="-100">
                                     <Span class="imageNumberSetting">Vertical</Span>
                                     <input v-model="card.layoutSettings.yOffset" class="shortvalue" type="number" min="-100">
+                                </div>
+                            </div>
+                            <div class="inputcontainer">
+                                <div>
+                                    <Span style="margin-left: 34px;">Zoom</Span>
+                                    <input class="shortvalue" v-model="card.layoutSettings.zoom" type="number">
                                 </div>
                             </div>
                             <button v-on:click="renderManualImage()" class="exportbutton">Render</button>
@@ -142,7 +149,8 @@
                 <div class="pilotskill">
                     <div v-bind:style="{ backgroundColor: card.imageSettings.psFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" class="psbox">{{ card.stats.pilotskill }}</div>
                 </div>
-                <div v-bind:style="{ backgroundColor: card.imageSettings.statFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" v-bind:class="{ none: !card.imageSettings.statIcons }" class="statscontainer">
+                <div v-bind:style="{ backgroundColor: card.imageSettings.statFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" v-bind:class="{ none: !card.imageSettings.statIcons }"
+                    class="statscontainer">
                     <div class="attack stat"> {{ card.stats.attack }} </div>
                     <div class="defense stat"> {{ card.stats.defense }} </div>
                     <div class="hull stat"> {{ card.stats.hull }} </div>

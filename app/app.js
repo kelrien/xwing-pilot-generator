@@ -32,9 +32,11 @@ var app = new Vue({
                 xOffset: 50,
                 yOffset: 50,
                 xSize: 50,
-                ySize: 50
+                ySize: 50,
+                zoom: 100.00,
+                xRatio: 1,
+                yRatio: 1,
             },
-            file: "",
             originalImage: "",
             renderedImage: "",
             ship: "Ship",
@@ -86,7 +88,6 @@ var app = new Vue({
         },
         "card.imageSettings.imageSize": {
             handler: function (newVal) {
-                debugger;
                 if (newVal == "manual") {
                     this.card.renderedImage = "";
                 } else {
@@ -114,12 +115,26 @@ var app = new Vue({
                 }
             },
             deep: true
+        },
+        "card.layoutSettings.zoom": {
+            handler: function(){
+                debugger;
+                if(this.card.layoutSettings.xRatio > this.card.layoutSettings.yRatio){
+                    debugger;
+                    this.card.layoutSettings.xSize = this.card.layoutSettings.zoom;
+                    this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * magicRatio * this.card.layoutSettings.yRatio;
+                } else{
+                    debugger;
+                    this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * magicRatio;
+                    this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * this.card.layoutSettings.xRatio;
+                }   
+            }
         }
     },
     computed: {
         manualImageVisible: function () {
             return !this.rendered && this.card.imageSettings.imageSize == "manual";
-        }
+        },
     },
     methods: {
         renderPreview: function () {
@@ -163,10 +178,11 @@ var app = new Vue({
             }
             var that = this;
             var manualImage = document.getElementById('manualImage');
-            pilot.setAttribute("style", manualImage.style.cssText);
-            debugger;
-            this.rendered = true;
-            this._createCanvas();
+            if (manualImage) {
+                pilot.setAttribute("style", manualImage.style.cssText);
+                this.rendered = true;
+                this._createCanvas();
+            }
         },
         readImage: function (event) {
             var reader = new FileReader();
@@ -178,7 +194,20 @@ var app = new Vue({
                 $(".pilot")
                     .css("background-image", "url(" + reader.result + ")");
                 this.$data.card.originalImage = reader.result;
-                this.renderPreview();
+                var image = new Image();
+                image.onload = function(event){
+                    this.card.layoutSettings.xRatio = event.target.width / event.target.height;
+                    this.card.layoutSettings.yRatio = event.target.height / event.target.width;
+                    if(event.target.height > event.target.width){
+                        this.card.layoutSettings.ySize = 100 * magicRatio;
+                        this.card.layoutSettings.xSize = this.card.layoutSettings.xRatio * 100;
+                    } else{
+                        this.card.layoutSettings.xSize = 100;
+                        this.card.layoutSettings.ySize = this.card.layoutSettings.yRatio * 100 * magicRatio;
+                    }
+                    this.renderPreview();
+                }.bind(this);
+                image.src = reader.result;
             }.bind(this), false);
         }
     },
