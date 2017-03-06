@@ -112,6 +112,8 @@ var app = new Vue({
                     } else {
                         this.renderManualImage();
                     }
+                }else{
+                    this.renderPreview();
                 }
             },
             deep: true
