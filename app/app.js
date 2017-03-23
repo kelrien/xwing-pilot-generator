@@ -1,4 +1,5 @@
-var magicRatio = 0.71428571428;
+var portraitRatio = 0.71428571428;
+var landscapeRatio = 1.4;
 
 var app = new Vue({
     el: '#main',
@@ -26,7 +27,8 @@ var app = new Vue({
                 psFrame: true,
                 statIcons: true,
                 imageSize: "auto",
-                gradient: true
+                gradient: true,
+                landscape: false
             },
             layoutSettings: {
                 xOffset: 50,
@@ -112,24 +114,23 @@ var app = new Vue({
                     } else {
                         this.renderManualImage();
                     }
-                }else{
+                } else {
                     this.renderPreview();
                 }
             },
             deep: true
         },
         "card.layoutSettings.zoom": {
-            handler: function(){
-                debugger;
-                if(this.card.layoutSettings.xRatio > this.card.layoutSettings.yRatio){
+            handler: function () {
+                if (this.card.layoutSettings.xRatio > this.card.layoutSettings.yRatio) {
                     debugger;
                     this.card.layoutSettings.xSize = this.card.layoutSettings.zoom;
-                    this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * magicRatio * this.card.layoutSettings.yRatio;
-                } else{
+                    this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * portraitRatio * this.card.layoutSettings.yRatio;
+                } else {
                     debugger;
-                    this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * magicRatio;
+                    this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * portraitRatio;
                     this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * this.card.layoutSettings.xRatio;
-                }   
+                }
             }
         }
     },
@@ -153,8 +154,19 @@ var app = new Vue({
             }
         },
         resizePreview: function () {
-            var width = document.getElementById('render').clientHeight * magicRatio + "px";
-            $('#render').css("width", width);
+            var render = $('#render');
+            if (this.card.imageSettings.landscape) {
+                debugger;
+                render.css("width", "100%");
+                var height = document.getElementById('render').clientWidth * landscapeRatio + "px";
+                render.css("height", height);
+
+            } else {
+                render.css("height", "70%");
+                var width = document.getElementById('render').clientHeight * portraitRatio + "px";
+                render.css("width", width);
+            }
+
         },
         saveImage: function () {
             var ipc = require('electron').ipcRenderer;
@@ -197,15 +209,15 @@ var app = new Vue({
                     .css("background-image", "url(" + reader.result + ")");
                 this.$data.card.originalImage = reader.result;
                 var image = new Image();
-                image.onload = function(event){
+                image.onload = function (event) {
                     this.card.layoutSettings.xRatio = event.target.width / event.target.height;
                     this.card.layoutSettings.yRatio = event.target.height / event.target.width;
-                    if(event.target.height > event.target.width){
-                        this.card.layoutSettings.ySize = 100 * magicRatio;
+                    if (event.target.height > event.target.width) {
+                        this.card.layoutSettings.ySize = 100 * portraitRatio;
                         this.card.layoutSettings.xSize = this.card.layoutSettings.xRatio * 100;
-                    } else{
+                    } else {
                         this.card.layoutSettings.xSize = 100;
-                        this.card.layoutSettings.ySize = this.card.layoutSettings.yRatio * 100 * magicRatio;
+                        this.card.layoutSettings.ySize = this.card.layoutSettings.yRatio * 100 * portraitRatio;
                     }
                     this.renderPreview();
                 }.bind(this);

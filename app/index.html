@@ -135,17 +135,22 @@
                             <span>Pilotskill box</span>
                             <input v-model="card.imageSettings.psFrame" type="checkbox" name="psframe" />
                         </div>
+                        <!--<div class="inputcontainer">
+                            <span>Landscape</span>
+                            <input v-model="card.imageSettings.landscape" type="checkbox" name="landscape" />
+                        </div>-->
                     </div>
                 </div>
             </div>
         </div>
         <div class="content">
-            <div id="render" v-bind:style="{ 'background-image': 'url(' + card.renderedImage + ')' }" class="render">
+            <div id="render" v-bind:class="{landscape: card.imageSettings.landscape}" v-bind:style="{ 'background-image': 'url(' + card.renderedImage + ')' }"
+                class="render">
                 <div id="manualImage" v-if="manualImageVisible" v-bind:style="{'background-image': 'url(' + card.originalImage + ')', 'background-size': card.layoutSettings.xSize+'% ' + card.layoutSettings.ySize +'%', 'background-position-x': card.layoutSettings.xOffset + '%', 'background-position-y': card.layoutSettings.yOffset + '%'}"
                     class="manualImage"></div>
             </div>
             <button v-on:click="saveImage()" class="exportbutton">Save Card</button>
-            <div id="pilot" class="pilot">
+            <div id="pilot" v-bind:class="{landscape: card.imageSettings.landscape}" class="pilot">
                 <div class="pilotskill">
                     <div v-bind:style="{ backgroundColor: card.imageSettings.psFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" class="psbox">{{ card.stats.pilotskill }}</div>
                 </div>
