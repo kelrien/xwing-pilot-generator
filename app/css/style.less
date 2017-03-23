@@ -1,4 +1,5 @@
 @import "_colors.less";
+@import "_icons.less";
 @import "_pilot.less";
 
 @font-face {
@@ -12,7 +13,6 @@
 }
 
 * {
-
     padding: 0;
     margin: 0;
 }
@@ -34,83 +34,6 @@ body {
     width: 100%;
     z-index: -1;
     background-color: @background-color;
-}
-
-.iconfont {
-    font-family: xwing-icons;
-    font-size: 2rem;
-    text-align: center;
-    display: inline-block;
-    width: 30px;
-}
-
-.focus,
-.targetlock,
-.barrelroll,
-.boost,
-.cloak,
-.evade,
-.arc,
-.slam {
-    margin: 12px 30px;
-    width: auto !important;
-    &:before {
-        font-size: 1.25rem;
-        font-family: xwing-icons;
-        position: relative;
-        top: -3px;
-        left: -26px;
-    }
-}
-
-.focus {
-    &:before {
-        content: '\0066';
-    }
-}
-
-.targetlock {
-    &:before {
-        content: "\006c";
-    }
-}
-
-.barrelroll {
-    &:before {
-        content: "\0072";
-        left: -29px;
-    }
-}
-
-.boost {
-    &:before {
-        content: "\0062";
-    }
-}
-
-.evade {
-    &:before {
-        content: "\0065";
-    }
-}
-
-.cloak {
-    &:before {
-        content: "\006b";
-    }
-}
-
-.arc {
-    &:before {
-        content: "R";
-    }
-}
-
-.slam {
-    &:before {
-        content: "s";
-        left: -22px;
-    }
 }
 
 .exportbutton {
@@ -243,6 +166,9 @@ body {
             height: 70%;
             background-size: 100% 100%;
             background-color: black;
+            .landscape{
+                width:70%;
+            }
             .manualImage {
                 position: absolute;
                 z-index: 3;

@@ -1,3 +1,61 @@
+.iconfont {
+  font-family: xwing-icons;
+  font-size: 2rem;
+  text-align: center;
+  display: inline-block;
+  width: 30px;
+}
+.focus,
+.targetlock,
+.barrelroll,
+.boost,
+.cloak,
+.evade,
+.arc,
+.slam {
+  margin: 12px 30px;
+  width: auto !important;
+}
+.focus:before,
+.targetlock:before,
+.barrelroll:before,
+.boost:before,
+.cloak:before,
+.evade:before,
+.arc:before,
+.slam:before {
+  font-size: 1.25rem;
+  font-family: xwing-icons;
+  position: relative;
+  top: -3px;
+  left: -26px;
+}
+.focus:before {
+  content: '\0066';
+}
+.targetlock:before {
+  content: "\006c";
+}
+.barrelroll:before {
+  content: "\0072";
+  left: -29px;
+}
+.boost:before {
+  content: "\0062";
+}
+.evade:before {
+  content: "\0065";
+}
+.cloak:before {
+  content: "\006b";
+}
+.arc:before {
+  content: "R";
+}
+.slam:before {
+  content: "s";
+  left: -22px;
+}
 .pilot {
   position: fixed;
   z-index: -2;
@@ -15,6 +73,10 @@
   height: 1400px;
   width: 1000px;
   background-color: black;
+}
+.pilot.landscape {
+  height: 1000px;
+  width: 1400px;
 }
 .pilot .pilotskill {
   font-size: 100px;
@@ -180,64 +242,6 @@ body {
   z-index: -1;
   background-color: #353535;
 }
-.iconfont {
-  font-family: xwing-icons;
-  font-size: 2rem;
-  text-align: center;
-  display: inline-block;
-  width: 30px;
-}
-.focus,
-.targetlock,
-.barrelroll,
-.boost,
-.cloak,
-.evade,
-.arc,
-.slam {
-  margin: 12px 30px;
-  width: auto !important;
-}
-.focus:before,
-.targetlock:before,
-.barrelroll:before,
-.boost:before,
-.cloak:before,
-.evade:before,
-.arc:before,
-.slam:before {
-  font-size: 1.25rem;
-  font-family: xwing-icons;
-  position: relative;
-  top: -3px;
-  left: -26px;
-}
-.focus:before {
-  content: '\0066';
-}
-.targetlock:before {
-  content: "\006c";
-}
-.barrelroll:before {
-  content: "\0072";
-  left: -29px;
-}
-.boost:before {
-  content: "\0062";
-}
-.evade:before {
-  content: "\0065";
-}
-.cloak:before {
-  content: "\006b";
-}
-.arc:before {
-  content: "R";
-}
-.slam:before {
-  content: "s";
-  left: -22px;
-}
 .exportbutton {
   font-size: 18px;
   color: white;
@@ -369,6 +373,9 @@ body {
   height: 70%;
   background-size: 100% 100%;
   background-color: black;
+}
+.main .content .render .landscape {
+  width: 70%;
 }
 .main .content .render .manualImage {
   position: absolute;
