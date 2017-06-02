@@ -122,15 +122,24 @@ var app = new Vue({
         },
         "card.layoutSettings.zoom": {
             handler: function () {
-                if (this.card.layoutSettings.xRatio > this.card.layoutSettings.yRatio) {
-                    debugger;
-                    this.card.layoutSettings.xSize = this.card.layoutSettings.zoom;
-                    this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * portraitRatio * this.card.layoutSettings.yRatio;
+                if (this.card.imageSettings.landscape) {
+                    if (this.card.layoutSettings.xRatio > this.card.layoutSettings.yRatio) {
+                        this.card.layoutSettings.ySize = this.card.layoutSettings.zoom;
+                        this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * landscapeRatio * this.card.layoutSettings.xRatio;
+                    } else {
+                        this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * landscapeRatio;
+                        this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * this.card.layoutSettings.yRatio;
+                    }
                 } else {
-                    debugger;
-                    this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * portraitRatio;
-                    this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * this.card.layoutSettings.xRatio;
+                    if (this.card.layoutSettings.xRatio > this.card.layoutSettings.yRatio) {
+                        this.card.layoutSettings.xSize = this.card.layoutSettings.zoom;
+                        this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * portraitRatio * this.card.layoutSettings.yRatio;
+                    } else {
+                        this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * portraitRatio;
+                        this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * this.card.layoutSettings.xRatio;
+                    }
                 }
+
             }
         }
     },
@@ -156,10 +165,9 @@ var app = new Vue({
         resizePreview: function () {
             var render = $('#render');
             if (this.card.imageSettings.landscape) {
-                debugger;
-                render.css("width", "100%");
-                var height = document.getElementById('render').clientWidth * landscapeRatio + "px";
-                render.css("height", height);
+                render.css("height", "50%");
+                var width = document.getElementById('render').clientHeight * landscapeRatio + "px";
+                render.css("width", width);
 
             } else {
                 render.css("height", "70%");

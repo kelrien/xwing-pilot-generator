@@ -239,6 +239,7 @@ body {
   position: fixed;
   height: 100%;
   width: 100%;
+  right: 0;
   z-index: -1;
   background-color: #353535;
 }
