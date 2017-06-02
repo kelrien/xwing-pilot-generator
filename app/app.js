@@ -124,11 +124,11 @@ var app = new Vue({
             handler: function () {
                 if (this.card.imageSettings.landscape) {
                     if (this.card.layoutSettings.xRatio > this.card.layoutSettings.yRatio) {
-                        this.card.layoutSettings.ySize = this.card.layoutSettings.zoom;
-                        this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * landscapeRatio * this.card.layoutSettings.xRatio;
+                        this.card.layoutSettings.xSize = this.card.layoutSettings.zoom;
+                        this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * landscapeRatio * this.card.layoutSettings.yRatio;
                     } else {
-                        this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * landscapeRatio;
-                        this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * this.card.layoutSettings.yRatio;
+                        this.card.layoutSettings.ySize = this.card.layoutSettings.zoom * landscapeRatio;
+                        this.card.layoutSettings.xSize = this.card.layoutSettings.zoom * this.card.layoutSettings.xRatio;
                     }
                 } else {
                     if (this.card.layoutSettings.xRatio > this.card.layoutSettings.yRatio) {
