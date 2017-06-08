@@ -6,8 +6,8 @@ var dialog = electron.dialog;
 
 var mainWindow;
 
-ipc.on('save', function(event, arg) {
-    dialog.showSaveDialog(function(fileName) {
+ipc.on('save', function (event, arg) {
+    dialog.showSaveDialog(function (fileName) {
         if (!fileName) {
             return;
         } else {
@@ -15,13 +15,13 @@ ipc.on('save', function(event, arg) {
                 fileName += ".png"
             }
         }
-        require("fs").writeFile(fileName, arg, 'base64', function(err) {
+        require("fs").writeFile(fileName, arg, 'base64', function (err) {
             console.log(err);
         });
     });
 });
 
-app.on('ready', function() {
+app.on('ready', function () {
 
     mainWindow = new BrowserWindow({
         width: 1280,
@@ -37,7 +37,7 @@ app.on('ready', function() {
 
     mainWindow.loadURL('file://' + __dirname + '/index.html');
 
-    mainWindow.on('closed', function() {
+    mainWindow.on('closed', function () {
         mainWindow = null;
         app.quit();
     });
