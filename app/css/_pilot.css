@@ -2,7 +2,6 @@
   font-family: xwing-numbers;
   src: url("../fonts/kimberley_bl.ttf");
 }
-
 .pilot {
   position: fixed;
   z-index: -2;
@@ -26,7 +25,6 @@
   width: 1400px;
 }
 .pilot .pilotskill {
-  font-family: xwing-numbers;
   font-size: 100px;
   color: #f47e20;
   margin-left: 150px;
@@ -36,6 +34,7 @@
 .pilot .pilotskill .psbox {
   text-align: center;
   width: 140px;
+  font-family: xwing-numbers;
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.65);
 }
@@ -114,8 +113,8 @@
   margin-right: 0 !important;
 }
 .pilot .statscontainer .stat {
-  font-family: xwing-numbers; 
   margin-top: 6%;
+  font-family: xwing-numbers;
 }
 .pilot .statscontainer .attack {
   color: #f01e44;
