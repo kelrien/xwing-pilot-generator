@@ -72,6 +72,8 @@
                         <input type="checkbox" v-model="card.actions.evade" class="evade shortvalue" />
                         <input type="checkbox" v-model="card.actions.arc" class="arc shortvalue" />
                         <input type="checkbox" v-model="card.actions.slam" class="slam shortvalue" />
+                        <input type="checkbox" v-model="card.actions.coordinate" class="coordinate shortvalue" />
+                        <input type="checkbox" v-model="card.actions.reinforce" class="reinforce shortvalue" />
                     </div>
                 </div>
                 <div class="inputcontainer">
@@ -174,6 +176,8 @@
                         <span v-if="card.actions.evade">e</span>
                         <span v-if="card.actions.arc">R</span>
                         <span v-if="card.actions.slam">s</span>
+                        <span v-if="card.actions.coordinate">o</span>
+                        <span v-if="card.actions.reinforce">i</span>
                     </div>
                     <div class="pilottext">{{ card.cardtext }}</div>
                 </div>

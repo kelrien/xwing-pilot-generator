@@ -14,6 +14,8 @@ var app = new Vue({
                 cloak: false,
                 evade: false,
                 slam: false,
+                coordinate: false,
+                reinforce: false
             },
             stats: {
                 pilotskill: "1",
@@ -49,7 +51,6 @@ var app = new Vue({
         customVisible: false,
         rendered: false
     },
-    // MAKE THE PREVIEW IMAGE A DIFFERENT FROM THE RENDERPREVIEW AND SWAP THEM ON THE RENDER BUTTON CLICK
     watch: {
         "card.actions": {
             handler: function (newVal, oldVal) {

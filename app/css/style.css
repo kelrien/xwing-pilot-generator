@@ -12,6 +12,8 @@
 .cloak,
 .evade,
 .arc,
+.coordinate,
+.reinforce,
 .slam {
   margin: 12px 30px;
   width: auto !important;
@@ -23,6 +25,8 @@
 .cloak:before,
 .evade:before,
 .arc:before,
+.coordinate:before,
+.reinforce:before,
 .slam:before {
   font-size: 1.25rem;
   font-family: xwing-icons;
@@ -32,6 +36,12 @@
 }
 .focus:before {
   content: '\0066';
+}
+.coordinate:before {
+  content: 'o';
+}
+.reinforce:before {
+  content: 'i';
 }
 .targetlock:before {
   content: "\006c";
@@ -55,6 +65,10 @@
 .slam:before {
   content: "s";
   left: -22px;
+}
+@font-face {
+  font-family: xwing-numbers;
+  src: url("../fonts/kimberley bl.tff");
 }
 .pilot {
   position: fixed;
