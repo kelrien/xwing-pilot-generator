@@ -61,19 +61,28 @@
                     <Span>Card text</Span><br />
                     <textarea v-model="card.cardtext" name="pilottext" rows="5" cols=""></textarea>
                 </div>
-                <div class="inputcontainer">
-                    <Span>Actions</Span><br />
-                    <div class="actions">
-                        <input type="checkbox" v-model="card.actions.focus" class="focus shortvalue" />
-                        <input type="checkbox" v-model="card.actions.targetlock" class="targetlock shortvalue" />
-                        <input type="checkbox" v-model="card.actions.barrelroll" class="barrelroll shortvalue" />
-                        <input type="checkbox" v-model="card.actions.boost" class="boost shortvalue" />
-                        <input type="checkbox" v-model="card.actions.cloak" class="cloak shortvalue" />
-                        <input type="checkbox" v-model="card.actions.evade" class="evade shortvalue" />
-                        <input type="checkbox" v-model="card.actions.arc" class="arc shortvalue" />
-                        <input type="checkbox" v-model="card.actions.slam" class="slam shortvalue" />
-                        <input type="checkbox" v-model="card.actions.coordinate" class="coordinate shortvalue" />
-                        <input type="checkbox" v-model="card.actions.reinforce" class="reinforce shortvalue" />
+                <div class="customizations">
+                    <div class="inputcontainer">
+                        <Span>Actions</Span><br />
+                        <div class="actions">
+                            <input type="checkbox" v-model="card.actions.focus" class="focus shortvalue" />
+                            <input type="checkbox" v-model="card.actions.targetlock" class="targetlock shortvalue" />
+                            <input type="checkbox" v-model="card.actions.barrelroll" class="barrelroll shortvalue" />
+                            <input type="checkbox" v-model="card.actions.boost" class="boost shortvalue" />
+                            <input type="checkbox" v-model="card.actions.cloak" class="cloak shortvalue" />
+                            <input type="checkbox" v-model="card.actions.evade" class="evade shortvalue" />
+                            <input type="checkbox" v-model="card.actions.arc" class="arc shortvalue" />
+                            <input type="checkbox" v-model="card.actions.slam" class="slam shortvalue" />
+                            <input type="checkbox" v-model="card.actions.coordinate" class="coordinate shortvalue" />
+                            <input type="checkbox" v-model="card.actions.reinforce" class="reinforce shortvalue" />
+                        </div>
+                    </div>
+
+                    <div class="inputcontainer">
+                        <Span>Upgrades</Span><br />
+                        <div class="upgrades">
+
+                        </div>
                     </div>
                 </div>
                 <div class="inputcontainer">
@@ -81,6 +90,7 @@
                     <img id="preview" width="100%" class="preview" />
                     <input class="fileinput" name="pilot" v-on:change="readImage" type="file">
                 </div>
+
             </div>
             <div v-if="!statsVisible" class="settings">
                 <div class=" options">
@@ -179,7 +189,11 @@
                         <span v-if="card.actions.coordinate">o</span>
                         <span v-if="card.actions.reinforce">i</span>
                     </div>
+
                     <div class="pilottext">{{ card.cardtext }}</div>
+                    <div id="upgradebar" class="upgradebar iconfont">
+                        ABCEIMPSUVWX
+                    </div>
                 </div>
             </div>
         </div>

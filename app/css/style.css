@@ -66,6 +66,12 @@
   content: "s";
   left: -22px;
 }
+.upgradebar {
+  width: 100%;
+  font-size: 3.25rem;
+  text-align: center;
+  letter-spacing: 10px;
+}
 @font-face {
   font-family: xwing-numbers;
   src: url("../fonts/kimberley_bl.ttf");
@@ -130,6 +136,7 @@
   font-size: 30px;
   font-family: sans-serif;
   font-weight: 300;
+  margin-bottom: 2rem;
 }
 .pilot .pilotname {
   margin: 0 auto;
@@ -148,7 +155,7 @@
   justify-content: flex-end;
   flex-grow: 1;
   width: 100%;
-  padding-bottom: 125px;
+  padding-bottom: 50px;
   font-family: xwing-text;
 }
 .pilot .gradient.gradientVisible {
@@ -279,9 +286,9 @@ body {
   justify-content: space-around;
 }
 .main .sidebar {
+  overflow-y: auto;
   position: relative;
-  width: 360px;
-  height: 100%;
+  width: 400px;
   background-color: white;
   box-shadow: 2px 0px 9px #222;
 }
@@ -297,13 +304,20 @@ body {
 }
 .main .sidebar .inputcontainer .actions {
   border-top: 2px solid #333;
-  width: 100%;
+  width: 170px;
   display: block;
-  flex-wrap: wrap;
   justify-content: space-between;
-  padding-left: 56px;
+  padding-left: 36px;
   padding-top: 12px;
-  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+.main .sidebar .inputcontainer .upgrades {
+  border-top: 2px solid #333;
+  width: 170px;
+  display: block;
+  justify-content: space-between;
+  padding-left: 36px;
+  padding-top: 12px;
   box-sizing: border-box;
 }
 .main .sidebar .inputcontainer.flex {
@@ -318,7 +332,7 @@ body {
 }
 .main .sidebar .inputcontainer textarea {
   width: 100%;
-  height: 100px;
+  height: 80px;
 }
 .main .sidebar .inputcontainer input {
   margin-left: 8px;
@@ -348,16 +362,20 @@ body {
   font-weight: 400;
 }
 .main .sidebar .stats {
-  position: absolute;
   color: #333;
   box-sizing: border-box;
   padding: 2rem 2rem 1rem 2rem;
   font-size: 1rem;
   width: 100%;
+  overflow-y: auto;
 }
 .main .sidebar .stats .fileinput {
   font-size: 1rem !important;
   width: 80% !important;
+}
+.main .sidebar .stats .customizations {
+  display: flex;
+  width: 100%;
 }
 .main .sidebar .settings {
   padding: 32px 32px 16px 32px;

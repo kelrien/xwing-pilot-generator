@@ -17,6 +17,21 @@ var app = new Vue({
                 coordinate: false,
                 reinforce: false
             },
+            upgrades: {
+                astromech: 'A',
+                bombs: 'B',
+                cannon: 'C',
+                elite: 'E',
+                illicit: 'I',
+                missile: 'M',
+                torpedo: 'P',
+                system: 'S',
+                turret: 'U',
+                salvaged: 'V',
+                crew: 'W',
+                tech: 'X',
+                title: 't'
+            },
             stats: {
                 pilotskill: "1",
                 attack: "1",
