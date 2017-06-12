@@ -288,7 +288,7 @@ body {
 .main .sidebar {
   overflow-y: auto;
   position: relative;
-  width: 400px;
+  width: 500px;
   background-color: white;
   box-shadow: 2px 0px 9px #222;
 }
@@ -304,7 +304,7 @@ body {
 }
 .main .sidebar .inputcontainer .actions {
   border-top: 2px solid #333;
-  width: 170px;
+  width: 215px;
   display: block;
   justify-content: space-between;
   padding-left: 36px;
@@ -313,7 +313,7 @@ body {
 }
 .main .sidebar .inputcontainer .upgrades {
   border-top: 2px solid #333;
-  width: 170px;
+  width: 215px;
   display: block;
   justify-content: space-between;
   padding-left: 36px;
@@ -375,6 +375,7 @@ body {
 }
 .main .sidebar .stats .customizations {
   display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 .main .sidebar .settings {
