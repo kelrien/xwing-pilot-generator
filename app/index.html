@@ -81,7 +81,10 @@
                     <div class="inputcontainer">
                         <Span>Upgrades</Span><br />
                         <div class="upgrades">
-
+                            <div style="width: 10px; height:10px; background-color:red" v-on:click="addUpgrade('A')" class="upgrade"></div>
+                        </div>
+                        <div class="upgrades">
+                            <div style="width: 10px; height:10px; background-color:blue" v-on:click="removeUpgrade('A')" class="upgrade"></div>
                         </div>
                     </div>
                 </div>
@@ -192,7 +195,7 @@
 
                     <div class="pilottext">{{ card.cardtext }}</div>
                     <div id="upgradebar" class="upgradebar iconfont">
-                        ABCEIMPSUVWX
+                        {{card.upgrades.used}}
                     </div>
                 </div>
             </div>

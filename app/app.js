@@ -30,7 +30,8 @@ var app = new Vue({
                 salvaged: 'V',
                 crew: 'W',
                 tech: 'X',
-                title: 't'
+                title: 't',
+                used: 'AW'
             },
             stats: {
                 pilotskill: "1",
@@ -165,6 +166,16 @@ var app = new Vue({
         },
     },
     methods: {
+        addUpgrade: function(upgrade){
+            this.card.upgrades.used += upgrade;
+            this.card.upgrades.used = this.card.upgrades.used.split('').sort().join('');
+            this.renderPreview();
+        },
+        removeUpgrade: function(upgrade){
+            this.card.upgrades.used = this.card.upgrades.used.replace(upgrade, "");
+            this.card.upgrades.used = this.card.upgrades.used.split('').sort().join('');
+            this.renderPreview();
+        },
         renderPreview: function () {
             var that = this;
             if (!this.timer) {
