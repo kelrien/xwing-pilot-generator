@@ -66,12 +66,6 @@
   content: "s";
   left: -22px;
 }
-.upgradebar {
-  width: 100%;
-  font-size: 3.25rem;
-  text-align: center;
-  letter-spacing: 10px;
-}
 @font-face {
   font-family: xwing-numbers;
   src: url("../fonts/kimberley_bl.ttf");
@@ -160,6 +154,14 @@
 }
 .pilot .gradient.gradientVisible {
   background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 45%);
+}
+.pilot .gradient .upgradebar {
+  margin: 0 auto;
+  width: 85%;
+  font-size: 3.25rem;
+  text-align: center;
+  letter-spacing: 10px;
+  word-wrap: break-word;
 }
 .pilot .statscontainer {
   padding: 5px 0 8px 12px;
@@ -316,8 +318,8 @@ body {
   width: 215px;
   display: block;
   justify-content: space-between;
-  padding-left: 36px;
   padding-top: 12px;
+  padding-left: 12px;
   box-sizing: border-box;
 }
 .main .sidebar .inputcontainer.flex {
@@ -371,7 +373,8 @@ body {
 }
 .main .sidebar .stats .fileinput {
   font-size: 1rem !important;
-  width: 80% !important;
+  width: 81%;
+  margin-bottom: 1.5rem;
 }
 .main .sidebar .stats .customizations {
   display: flex;

@@ -1,8 +1,7 @@
 @import "_colors.less";
-
 @font-face {
-  font-family: xwing-numbers;
-  src: url("../fonts/kimberley_bl.ttf");
+    font-family: xwing-numbers;
+    src: url("../fonts/kimberley_bl.ttf");
 }
 
 .pilot {
@@ -87,6 +86,14 @@
         font-family: xwing-text;
         &.gradientVisible {
             background: linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 45%);
+        }
+        .upgradebar {
+            margin: 0 auto;
+            width: 85%;
+            font-size: 3.25rem;
+            text-align: center;
+            letter-spacing: 10px;
+            word-wrap: break-word;
         }
     }
     .statscontainer {

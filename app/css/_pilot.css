@@ -87,6 +87,14 @@
 .pilot .gradient.gradientVisible {
   background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 45%);
 }
+.pilot .gradient .upgradebar {
+  margin: 0 auto;
+  width: 85%;
+  font-size: 3.25rem;
+  text-align: center;
+  letter-spacing: 10px;
+  word-wrap: break-word;
+}
 .pilot .statscontainer {
   padding: 5px 0 8px 12px;
   border-radius: 6px;
