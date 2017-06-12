@@ -130,6 +130,7 @@
   font-size: 30px;
   font-family: sans-serif;
   font-weight: 300;
+  margin-bottom: 2rem;
 }
 .pilot .pilotname {
   margin: 0 auto;
@@ -148,11 +149,19 @@
   justify-content: flex-end;
   flex-grow: 1;
   width: 100%;
-  padding-bottom: 125px;
+  padding-bottom: 50px;
   font-family: xwing-text;
 }
 .pilot .gradient.gradientVisible {
   background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 45%);
+}
+.pilot .gradient .upgradebar {
+  margin: 0 auto;
+  width: 85%;
+  font-size: 3.25rem;
+  text-align: center;
+  letter-spacing: 10px;
+  word-wrap: break-word;
 }
 .pilot .statscontainer {
   padding: 5px 0 8px 12px;
@@ -230,6 +239,155 @@
   top: -7px;
   left: 3px;
 }
+.sidebar {
+  overflow-y: auto;
+  position: relative;
+  width: 500px;
+  background-color: white;
+  box-shadow: 2px 0px 9px #222;
+}
+.sidebar h4 {
+  font-weight: 300;
+}
+.sidebar .section {
+  border-top: 2px solid #333;
+  padding-top: 16px;
+}
+.sidebar .inputcontainer {
+  margin-bottom: 1rem;
+}
+.sidebar .inputcontainer .actions {
+  border-top: 2px solid #333;
+  width: 215px;
+  display: block;
+  justify-content: space-between;
+  padding-left: 36px;
+  padding-top: 12px;
+  box-sizing: border-box;
+}
+.sidebar .inputcontainer .upgrades {
+  border-top: 2px solid #333;
+  width: 215px;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  padding-left: 10%;
+  padding-top: 1rem;
+}
+.sidebar .inputcontainer .upgrades .upgrade {
+  margin-top: 0.5rem;
+  width: 33%;
+  cursor: pointer;
+}
+.sidebar .inputcontainer .upgrades .upgrade::selection {
+  background-color: transparent;
+}
+.sidebar .inputcontainer .upgrades .upgrade .iconfont {
+  font-size: 1.25rem;
+}
+.sidebar .inputcontainer .upgrades .upgrade .add {
+  display: inline-block;
+  text-align: center;
+  color: white;
+  width: 1rem;
+  height: 1rem;
+  background-color: dodgerblue;
+}
+.sidebar .inputcontainer .upgrades .upgrade .add::selection {
+  background-color: transparent;
+}
+.sidebar .inputcontainer .upgrades .upgrade .remove {
+  display: inline-block;
+  text-align: center;
+  color: white;
+  width: 1rem;
+  height: 1rem;
+  background-color: #C0C0C0;
+}
+.sidebar .inputcontainer .upgrades .upgrade .remove::selection {
+  background-color: transparent;
+}
+.sidebar .inputcontainer.flex {
+  display: flex;
+  justify-content: space-around;
+}
+.sidebar .inputcontainer input,
+.sidebar .inputcontainer textarea {
+  border: 1px solid #333;
+  padding: 3px;
+  font-family: sans-serif;
+}
+.sidebar .inputcontainer textarea {
+  width: 100%;
+  height: 80px;
+}
+.sidebar .inputcontainer input {
+  margin-left: 8px;
+  font-size: 1rem;
+  width: 120px;
+}
+.sidebar .inputcontainer .shortvalue {
+  width: 50px;
+}
+.sidebar .menu {
+  height: 40px;
+  width: 100%;
+  display: flex;
+}
+.sidebar .menu button {
+  width: 50%;
+  border: none;
+  height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+  outline: none;
+}
+.sidebar .menu button.active {
+  background-color: dodgerblue;
+  font-weight: 400;
+}
+.sidebar .stats {
+  color: #333;
+  box-sizing: border-box;
+  padding: 2rem 2rem 0 2rem;
+  font-size: 1rem;
+  width: 100%;
+  overflow-y: auto;
+}
+.sidebar .stats .fileinput {
+  font-size: 1rem !important;
+  width: 81%;
+  margin-bottom: 1.5rem;
+}
+.sidebar .stats .customizations {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.sidebar .settings {
+  padding: 32px 32px 16px 32px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  color: #333;
+  box-sizing: border-box;
+}
+.sidebar .settings .imageSizeForm {
+  display: inline-table;
+  line-height: 1.5;
+}
+.sidebar .settings .imageSizeForm input[type="radio"] {
+  width: auto;
+  margin-right: 12px;
+}
+.sidebar .settings .imageNumberSetting {
+  display: inline-block;
+  width: 75px;
+  text-align: right;
+}
 @font-face {
   font-family: xwing-icons;
   src: url('../fonts/xwing-miniatures.ttf');
@@ -277,108 +435,6 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-}
-.main .sidebar {
-  position: relative;
-  width: 360px;
-  height: 100%;
-  background-color: white;
-  box-shadow: 2px 0px 9px #222;
-}
-.main .sidebar h4 {
-  font-weight: 300;
-}
-.main .sidebar .section {
-  border-top: 2px solid #333;
-  padding-top: 16px;
-}
-.main .sidebar .inputcontainer {
-  margin-bottom: 1rem;
-}
-.main .sidebar .inputcontainer .actions {
-  border-top: 2px solid #333;
-  width: 100%;
-  display: block;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding-left: 56px;
-  padding-top: 12px;
-  margin-bottom: 30px;
-  box-sizing: border-box;
-}
-.main .sidebar .inputcontainer.flex {
-  display: flex;
-  justify-content: space-around;
-}
-.main .sidebar .inputcontainer input,
-.main .sidebar .inputcontainer textarea {
-  border: 1px solid #333;
-  padding: 3px;
-  font-family: sans-serif;
-}
-.main .sidebar .inputcontainer textarea {
-  width: 100%;
-  height: 100px;
-}
-.main .sidebar .inputcontainer input {
-  margin-left: 8px;
-  font-size: 1rem;
-  width: 120px;
-}
-.main .sidebar .inputcontainer .shortvalue {
-  width: 50px;
-}
-.main .sidebar .menu {
-  height: 40px;
-  width: 100%;
-  display: flex;
-}
-.main .sidebar .menu button {
-  width: 50%;
-  border: none;
-  height: 40px;
-  text-align: center;
-  color: white;
-  font-size: 18px;
-  font-weight: 100;
-  outline: none;
-}
-.main .sidebar .menu button.active {
-  background-color: dodgerblue;
-  font-weight: 400;
-}
-.main .sidebar .stats {
-  position: absolute;
-  color: #333;
-  box-sizing: border-box;
-  padding: 2rem 2rem 1rem 2rem;
-  font-size: 1rem;
-  width: 100%;
-}
-.main .sidebar .stats .fileinput {
-  font-size: 1rem !important;
-  width: 80% !important;
-}
-.main .sidebar .settings {
-  padding: 32px 32px 16px 32px;
-  overflow-y: auto;
-  position: absolute;
-  width: 100%;
-  color: #333;
-  box-sizing: border-box;
-}
-.main .sidebar .settings .imageSizeForm {
-  display: inline-table;
-  line-height: 1.5;
-}
-.main .sidebar .settings .imageSizeForm input[type="radio"] {
-  width: auto;
-  margin-right: 12px;
-}
-.main .sidebar .settings .imageNumberSetting {
-  display: inline-block;
-  width: 75px;
-  text-align: right;
 }
 .main .content {
   height: 100%;

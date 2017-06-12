@@ -1,6 +1,7 @@
 @import "_colors.less";
 @import "_icons.less";
 @import "_pilot.less";
+@import "_sidebar.less";
 
 @font-face {
     font-family: xwing-icons;
@@ -56,108 +57,6 @@ body {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
-    .sidebar {
-        position: relative;
-        width: 360px;
-        height: 100%;
-        h4 {
-            font-weight: 300;
-        }
-        .section {
-            border-top: 2px solid #333;
-            padding-top: 16px;
-        }
-        .inputcontainer {
-            margin-bottom: 1rem;
-            .actions {
-                border-top: 2px solid #333;
-                width: 100%;
-                display: block;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                padding-left: 56px;
-                padding-top: 12px;
-                margin-bottom: 30px;
-                box-sizing: border-box;
-            }
-            &.flex {
-                display: flex;
-                justify-content: space-around
-            }
-            input,
-            textarea {
-                border: 1px solid #333;
-                padding: 3px;
-                font-family: sans-serif;
-            }
-            textarea {
-                width: 100%;
-                height: 100px;
-            }
-            input {
-                margin-left: 8px;
-                font-size: 1rem;
-                width: 120px;
-            }
-            .shortvalue {
-                width: 50px;
-            }
-        }
-        .menu {
-            height: 40px;
-            width: 100%;
-            display: flex;
-            button {
-                width: 50%;
-                border: none;
-                height: 40px;
-                text-align: center;
-                color: white;
-                font-size: 18px;
-                font-weight: 100;
-                outline: none;
-                &.active {
-                    background-color: @button-color;
-                    font-weight: 400;
-                }
-            }
-        }
-        background-color: white;
-        box-shadow: 2px 0px 9px #222;
-        .stats {
-            position: absolute;
-            color: #333;
-            box-sizing: border-box;
-            padding: 2rem 2rem 1rem 2rem;
-            font-size: 1rem;
-            width: 100%;
-            .fileinput {
-                font-size: 1rem !important;
-                width: 80% !important;
-            }
-        }
-        .settings {
-            padding: 32px 32px 16px 32px;
-            overflow-y: auto;
-            position: absolute;
-            width: 100%;
-            color: #333;
-            box-sizing: border-box;
-            .imageSizeForm {
-                display: inline-table;
-                line-height: 1.5;
-                input[type="radio"] {
-                    width: auto;
-                    margin-right: 12px;
-                }
-            }
-            .imageNumberSetting {
-                display: inline-block;
-                width: 75px;
-                text-align: right;
-            }
-        }
-    }
     .content {
         height: 100%;
         .render {
