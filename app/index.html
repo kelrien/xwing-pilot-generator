@@ -61,6 +61,11 @@
                     <Span>Card text</Span><br />
                     <textarea v-model="card.cardtext" name="pilottext" rows="5" cols=""></textarea>
                 </div>
+                <div class="inputcontainer">
+                    <span>Artwork</span>
+                    <img id="preview" class="preview" />
+                    <input class="fileinput" name="pilot" v-on:change="readImage" type="file">
+                </div>
                 <div class="customizations">
                     <div class="inputcontainer">
                         <Span>Actions</Span><br />
@@ -81,19 +86,18 @@
                     <div class="inputcontainer">
                         <Span>Upgrades</Span><br />
                         <div class="upgrades">
-                            <div style="width: 10px; height:10px; background-color:red" v-on:click="addUpgrade('A')" class="upgrade"></div>
-                        </div>
-                        <div class="upgrades">
-                            <div style="width: 10px; height:10px; background-color:blue" v-on:click="removeUpgrade('A')" class="upgrade"></div>
+                            <div class="upgrade">
+                                <div style="width: 10px; height:10px; background-color:red" v-on:click="addUpgrade('A')" class="add"></div>
+                                <div style="width: 10px; height:10px; background-color:blue" v-on:click="removeUpgrade('A')" class="remove"></div>
+                            </div>
+                            <div class="upgrade">
+                                <div style="width: 10px; height:10px; background-color:red" v-on:click="addUpgrade('W')" class="add"></div>
+                                <div style="width: 10px; height:10px; background-color:blue" v-on:click="removeUpgrade('W')" class="remove"></div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-                <div class="inputcontainer">
-                    <div>Artwork</div>
-                    <img id="preview" width="100%" class="preview" />
-                    <input class="fileinput" name="pilot" v-on:change="readImage" type="file">
-                </div>
-
             </div>
             <div v-if="!statsVisible" class="settings">
                 <div class=" options">
