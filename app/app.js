@@ -31,7 +31,7 @@ var app = new Vue({
                 crew: 'W',
                 tech: 'X',
                 title: 't',
-                used: 'AW'
+                used: ''
             },
             stats: {
                 pilotskill: "1",
