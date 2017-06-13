@@ -285,6 +285,7 @@
 }
 .sidebar .inputcontainer .upgrades .upgrade .iconfont {
   font-size: 1.25rem;
+  display: block;
 }
 .sidebar .inputcontainer .upgrades .upgrade .add {
   display: inline-block;
