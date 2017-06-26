@@ -14,6 +14,24 @@ var app = new Vue({
                 cloak: false,
                 evade: false,
                 slam: false,
+                coordinate: false,
+                reinforce: false
+            },
+            upgrades: {
+                astromech: 'A',
+                bombs: 'B',
+                cannon: 'C',
+                elite: 'E',
+                illicit: 'I',
+                missile: 'M',
+                torpedo: 'P',
+                system: 'S',
+                turret: 'U',
+                salvaged: 'V',
+                crew: 'W',
+                tech: 'X',
+                title: 't',
+                used: ''
             },
             stats: {
                 pilotskill: "1",
@@ -49,7 +67,6 @@ var app = new Vue({
         customVisible: false,
         rendered: false
     },
-    // MAKE THE PREVIEW IMAGE A DIFFERENT FROM THE RENDERPREVIEW AND SWAP THEM ON THE RENDER BUTTON CLICK
     watch: {
         "card.actions": {
             handler: function (newVal, oldVal) {
@@ -149,6 +166,16 @@ var app = new Vue({
         },
     },
     methods: {
+        addUpgrade: function(upgrade){
+            this.card.upgrades.used += upgrade;
+            this.card.upgrades.used = this.card.upgrades.used.split('').sort().join('');
+            this.renderPreview();
+        },
+        removeUpgrade: function(upgrade){
+            this.card.upgrades.used = this.card.upgrades.used.replace(upgrade, "");
+            this.card.upgrades.used = this.card.upgrades.used.split('').sort().join('');
+            this.renderPreview();
+        },
         renderPreview: function () {
             var that = this;
             if (!this.timer) {

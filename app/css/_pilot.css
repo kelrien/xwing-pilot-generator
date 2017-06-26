@@ -2,7 +2,6 @@
   font-family: xwing-numbers;
   src: url("../fonts/kimberley_bl.ttf");
 }
-
 .pilot {
   position: fixed;
   z-index: -2;
@@ -26,7 +25,6 @@
   width: 1400px;
 }
 .pilot .pilotskill {
-  font-family: xwing-numbers;
   font-size: 100px;
   color: #f47e20;
   margin-left: 150px;
@@ -36,6 +34,7 @@
 .pilot .pilotskill .psbox {
   text-align: center;
   width: 140px;
+  font-family: xwing-numbers;
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.65);
 }
@@ -63,6 +62,7 @@
   font-size: 30px;
   font-family: sans-serif;
   font-weight: 300;
+  margin-bottom: 2rem;
 }
 .pilot .pilotname {
   margin: 0 auto;
@@ -81,11 +81,19 @@
   justify-content: flex-end;
   flex-grow: 1;
   width: 100%;
-  padding-bottom: 125px;
+  padding-bottom: 50px;
   font-family: xwing-text;
 }
 .pilot .gradient.gradientVisible {
   background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 45%);
+}
+.pilot .gradient .upgradebar {
+  margin: 0 auto;
+  width: 85%;
+  font-size: 3.25rem;
+  text-align: center;
+  letter-spacing: 10px;
+  word-wrap: break-word;
 }
 .pilot .statscontainer {
   padding: 5px 0 8px 12px;
@@ -114,8 +122,8 @@
   margin-right: 0 !important;
 }
 .pilot .statscontainer .stat {
-  font-family: xwing-numbers; 
   margin-top: 6%;
+  font-family: xwing-numbers;
 }
 .pilot .statscontainer .attack {
   color: #f01e44;
