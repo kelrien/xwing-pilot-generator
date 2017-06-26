@@ -168,12 +168,12 @@ var app = new Vue({
     methods: {
         addUpgrade: function(upgrade){
             this.card.upgrades.used += upgrade;
-            this.card.upgrades.used = this.card.upgrades.used.split('').sort().join('');
+            this.card.upgrades.used = this.card.upgrades.used.split('').join('');
             this.renderPreview();
         },
         removeUpgrade: function(upgrade){
             this.card.upgrades.used = this.card.upgrades.used.replace(upgrade, "");
-            this.card.upgrades.used = this.card.upgrades.used.split('').sort().join('');
+            this.card.upgrades.used = this.card.upgrades.used.split('').join('');
             this.renderPreview();
         },
         renderPreview: function () {
