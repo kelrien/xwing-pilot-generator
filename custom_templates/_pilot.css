@@ -2,6 +2,10 @@
   font-family: xwing-numbers;
   src: url("../app/fonts/kimberley_bl.ttf");
 }
+@font-face {
+  font-family: xwing-icons;
+  src: url("../app/fonts/xwing-miniatures.ttf");
+}
 .pilot {
   box-sizing: border-box;
   background-color: white;
