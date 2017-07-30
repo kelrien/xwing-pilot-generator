@@ -159,18 +159,16 @@
                     <div class="section">
                         <!-- Flip Image, Size Adjustment, position adjustments, boxes / backgrounds for texts -->
                         <div class="inputcontainer">
-                            <span>Gradient</span> <input v-model="card.imageSettings.gradient" type="checkbox" name="gradient"
-                            />
-                        </div>
-                        <div class="inputcontainer">
                             <span>Image Size</span>
                             <form class="imageSizeForm">
-                                <input type="radio" v-model="card.imageSettings.imageSize" class="shortvalue" name="imagesize" value="auto">                                Auto <br>
-                                <input type="radio" v-model="card.imageSettings.imageSize" class="shortvalue" name="imagesize" value="manual">                                Custom <br>
+                                <input type="radio" v-model="card.imageSettings.imageSize" class="shortvalue" name="imagesize" value="auto">Auto
+                                <br>
+                                <input type="radio" v-model="card.imageSettings.imageSize" class="shortvalue" name="imagesize" value="manual">Custom
+                                <br>
                             </form>
                         </div>
                         <div v-if="card.imageSettings.imageSize === 'manual'">
-                            <div class="inputcontainer flex">
+                            <div class="inputcontainer">
                                 <div>
                                     <Span class="imageNumberSetting">Width</Span>
                                     <input v-model="card.layoutSettings.xSize" class="shortvalue" type="number">
@@ -178,7 +176,7 @@
                                     <input v-model="card.layoutSettings.ySize" class="shortvalue" type="number">
                                 </div>
                             </div>
-                            <div class="inputcontainer flex">
+                            <div class="inputcontainer">
                                 <div>
                                     <Span class="imageNumberSetting">Horizontal</Span>
                                     <input v-model="card.layoutSettings.xOffset" class="shortvalue" type="number" min="-100">
@@ -194,25 +192,6 @@
                             </div>
                             <button v-on:click="renderManualImage()" class="exportbutton">Render</button>
                         </div>
-                        <h4>Layout Options</h4>
-                        <div class="section">
-                            <div class="inputcontainer">
-                                <span>Statistics box</span>
-                                <input v-model="card.imageSettings.statFrame" type="checkbox" name="statframe" />
-                            </div>
-                        </div>
-                        <div class="inputcontainer">
-                            <span>Statistics icons</span>
-                            <input v-model="card.imageSettings.statIcons" type="checkbox" name="staticons" />
-                        </div>
-                        <div class="inputcontainer">
-                            <span>Pilotskill box</span>
-                            <input v-model="card.imageSettings.psFrame" type="checkbox" name="psframe" />
-                        </div>
-                        <div class="inputcontainer">
-                            <span>Landscape</span>
-                            <input v-model="card.imageSettings.landscape" type="checkbox" name="landscape" />
-                        </div>
                     </div>
                 </div>
             </div>
@@ -226,40 +205,36 @@
             <button v-on:click="saveImage()" class="exportbutton">Save Card</button>
             <div id="pilot" v-bind:class="{landscape: card.imageSettings.landscape}" class="pilot">
                 <div class="pilotskill">
-                    <div v-bind:style="{ backgroundColor: card.imageSettings.psFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" class="psbox">{{ card.stats.pilotskill }}</div>
+                    <div class="psbox">{{ card.stats.pilotskill }}</div>
                 </div>
-                <div v-bind:style="{ backgroundColor: card.imageSettings.statFrame ? 'rgba(0, 0, 0, 0.65)':'transparent' }" v-bind:class="{ none: !card.imageSettings.statIcons }"
-                    class="statscontainer">
+                <div class="statscontainer">
                     <div class="attack stat"> {{ card.stats.attack }} </div>
                     <div class="defense stat"> {{ card.stats.defense }} </div>
                     <div class="hull stat"> {{ card.stats.hull }} </div>
                     <div class="shields stat"> {{ card.stats.shields }} </div>
                 </div>
-                <div v-bind:class="{gradientVisible: card.imageSettings.gradient}" class="gradient">
-                    <div class="pilotname">{{ card.pilotname }}</div>
-                    <div class="shipname">{{ card.ship }}</div>
-                    <div id="iconbar" class="iconbar">
-                        <span v-if="card.actions.focus">f</span>
-                        <span v-if="card.actions.targetlock">l</span>
-                        <span v-if="card.actions.barrelroll">r</span>
-                        <span v-if="card.actions.boost">b</span>
-                        <span v-if="card.actions.cloak">k</span>
-                        <span v-if="card.actions.evade">e</span>
-                        <span v-if="card.actions.arc">R</span>
-                        <span v-if="card.actions.slam">s</span>
-                        <span v-if="card.actions.coordinate">o</span>
-                        <span v-if="card.actions.reinforce">i</span>
-                    </div>
+                <div class="pilotname">{{ card.pilotname }}</div>
+                <div class="shipname">{{ card.ship }}</div>
+                <div id="iconbar" class="iconbar">
+                    <span v-if="card.actions.focus">f</span>
+                    <span v-if="card.actions.targetlock">l</span>
+                    <span v-if="card.actions.barrelroll">r</span>
+                    <span v-if="card.actions.boost">b</span>
+                    <span v-if="card.actions.cloak">k</span>
+                    <span v-if="card.actions.evade">e</span>
+                    <span v-if="card.actions.arc">R</span>
+                    <span v-if="card.actions.slam">s</span>
+                    <span v-if="card.actions.coordinate">o</span>
+                    <span v-if="card.actions.reinforce">i</span>
+                </div>
 
-                    <div class="pilottext">{{ card.cardtext }}</div>
-                    <div id="upgradebar" class="upgradebar iconfont">
-                        {{card.upgrades.used}}
-                    </div>
+                <div class="pilottext">{{ card.cardtext }}</div>
+                <div id="upgradebar" class="upgradebar iconfont">
+                    {{card.upgrades.used}}
                 </div>
             </div>
         </div>
-    </div>
-    <script src="app.js"></script>
+        <script src="app.js"></script>
 </body>
 
 </html>
