@@ -95,15 +95,19 @@
 .pilot .pilotskill {
   font-size: 100px;
   color: #f47e20;
-  margin-left: 150px;
+  margin-left: 90px;
   margin-top: 145px;
   text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
 }
 .pilot .pilotskill .psbox {
+  box-sizing: border-box;
+  padding-top: 3px;
+  border: 8px solid #f47e20;
   text-align: center;
   width: 140px;
+  height: 140px;
   font-family: xwing-numbers;
-  border-radius: 6px;
+  border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.65);
 }
 .pilot .iconbar {
@@ -122,6 +126,7 @@
   text-align: center;
   width: 800px;
   z-index: 5;
+  font-family: xwing-text;
 }
 .pilot .pilottext {
   margin: 0px auto;
@@ -142,20 +147,7 @@
   font-style: italic;
   font-size: 45px;
 }
-.pilot .gradient {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  flex-grow: 1;
-  width: 100%;
-  padding-bottom: 50px;
-  font-family: xwing-text;
-}
-.pilot .gradient.gradientVisible {
-  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 45%);
-}
-.pilot .gradient .upgradebar {
+.pilot .upgradebar {
   margin: 0 auto;
   width: 85%;
   font-size: 3.25rem;
@@ -171,7 +163,7 @@
   background-color: rgba(0, 0, 0, 0.65);
   font-size: 53px;
   margin-top: 2%;
-  margin-left: 150px;
+  margin-left: 100px;
   width: 140px;
   text-align: justify;
   font-weight: 300;
@@ -272,8 +264,8 @@
   justify-content: space-around;
   box-sizing: border-box;
   flex-wrap: wrap;
-  padding-left: 10%;
-  padding-top: 1rem;
+  padding-left: 0.75rem;
+  padding-top: 0.5rem;
 }
 .sidebar .inputcontainer .upgrades .upgrade {
   margin-top: 0.5rem;

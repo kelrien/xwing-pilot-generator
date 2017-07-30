@@ -27,15 +27,19 @@
 .pilot .pilotskill {
   font-size: 100px;
   color: #f47e20;
-  margin-left: 100px;
+  margin-left: 90px;
   margin-top: 145px;
   text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
 }
 .pilot .pilotskill .psbox {
+  box-sizing: border-box;
+  padding-top: 3px;
+  border: 8px solid #f47e20;
   text-align: center;
   width: 140px;
+  height: 140px;
   font-family: xwing-numbers;
-  border-radius: 6px;
+  border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.65);
 }
 .pilot .iconbar {
