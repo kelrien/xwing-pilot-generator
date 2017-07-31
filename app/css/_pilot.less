@@ -16,7 +16,6 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    display: flex;
     flex-direction: column;
     height: 1400px;
     width: 1000px;
@@ -35,6 +34,7 @@
             box-sizing: border-box;
             padding-top: 3px;
             border: 8px solid @pilotskill-orange;
+            box-shadow: 0 0 0 1px black, inset 0 0 0 1px black;
             text-align: center;
             width: 140px;
             height: 140px;
@@ -60,6 +60,7 @@
         width: 800px;
         z-index: 5;
         font-family: xwing-text;
+        text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
     }
     .pilottext {
         margin: 0px auto;
@@ -71,7 +72,7 @@
         margin-bottom: 2rem;
     }
     .pilotname {
-        margin: 0 auto;
+        margin: 150px auto 0 auto;
         font-size: 70px;
         letter-spacing: 2px;
     }
