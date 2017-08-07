@@ -15,20 +15,28 @@ ipc.on('save', function(event, arg) {
                 fileName += ".png"
             }
         }
-        require("fs").writeFile(fileName, arg, 'base64', function(err) {
-            console.log(err);
+        fs.writeFile(fileName, arg, 'base64', function (err) {
+            if (err) {
+                console.log(err);
+            }
         });
     });
 });
 
-app.on('ready', function() {
+app.on('ready', function () {
+    var msg = app.getAppPath();
+    //TODO: string split benutzen um den absoluten pfad zusammenbauen zu können
+    //den exakten string zum splitten holst du dir abhängig vom OS
+
+    var path = getTemplatePath();
+    checkTemplateDir(path);
+    var templates = [];
 
     mainWindow = new BrowserWindow({
         width: 1280,
         minWidth: 1280,
-        height: 750,
-        minHeight: 750,
-        show: true
+        height: 768,
+        minHeight: 768
     });
 
     mainWindow.once('ready-to-show', () => {
