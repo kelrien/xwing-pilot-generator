@@ -18,20 +18,14 @@ ipc.on('save', function (event, arg) {
                 fileName += ".png"
             }
         }
-<<<<<<< HEAD
         fs.writeFile(fileName, arg, 'base64', function (err) {
             if (err) {
                 console.log(err);
             }
-=======
-        require("fs").writeFile(fileName, arg, 'base64', function (err) {
-            console.log(err);
->>>>>>> pilot-playground
         });
     });
 });
 
-<<<<<<< HEAD
 ipc.on("templates", function (event, arg) {
     mainWindow.webContents.send("templates", mainWindow.templates);
 });
@@ -43,9 +37,6 @@ app.on('ready', function () {
     templatesPath = getTemplatePath();
     checkTemplateDir(templatesPath);
 
-=======
-app.on('ready', function () {
->>>>>>> pilot-playground
 
     mainWindow = new BrowserWindow({
         width: 1280,
@@ -64,11 +55,7 @@ app.on('ready', function () {
 
     mainWindow.loadURL('file://' + __dirname + '/index.html');
 
-<<<<<<< HEAD
     mainWindow.on('closed', () => {
-=======
-    mainWindow.on('closed', function () {
->>>>>>> pilot-playground
         mainWindow = null;
         app.quit();
     });
