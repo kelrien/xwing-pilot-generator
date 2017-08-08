@@ -1,9 +1,12 @@
-var portraitRatio = 0.71428571428;
-var landscapeRatio = 1.4;
+var portraitRatio = 0.71428571428,
+    landscapeRatio = 1.4,
+    ipc = require('electron').ipcRenderer;
 
 var app = new Vue({
     el: '#main',
     data: {
+        template: "",
+        templates: [],
         card: {
             actions: {
                 focus: false,
@@ -68,6 +71,12 @@ var app = new Vue({
         rendered: false
     },
     watch: {
+        "template": {
+            handler: function (newVal, oldVal) {
+                document.getElementById("test").href = newVal;
+                this.renderPreview();
+            }
+        },
         "card.actions": {
             handler: function (newVal, oldVal) {
                 this.renderPreview();
@@ -166,12 +175,12 @@ var app = new Vue({
         },
     },
     methods: {
-        addUpgrade: function(upgrade){
+        addUpgrade: function (upgrade) {
             this.card.upgrades.used += upgrade;
             this.card.upgrades.used = this.card.upgrades.used.split('').sort().join('');
             this.renderPreview();
         },
-        removeUpgrade: function(upgrade){
+        removeUpgrade: function (upgrade) {
             this.card.upgrades.used = this.card.upgrades.used.replace(upgrade, "");
             this.card.upgrades.used = this.card.upgrades.used.split('').sort().join('');
             this.renderPreview();
@@ -204,7 +213,6 @@ var app = new Vue({
 
         },
         saveImage: function () {
-            var ipc = require('electron').ipcRenderer;
             var imageData = $('#render').css('background-image').split(',')[1];
             ipc.send('save', imageData);
         },
@@ -261,6 +269,11 @@ var app = new Vue({
         }
     },
     mounted: function () {
+        ipc.on("templates", (sender, args) => {
+            app.templates = args;
+        });
+
+        ipc.send("templates", "");
         this._createCanvas();
         window.addEventListener('resize', (event) => {
             this.resizePreview();

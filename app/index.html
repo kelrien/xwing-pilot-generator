@@ -12,7 +12,7 @@
         }
     </script>
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/_pilot.css" rel="stylesheet">
+    <link id="test" href="css/_pilot.css" rel="stylesheet">
     <script src="js/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <script src="js/dom-to-image.min.js"></script>
     <script src="js/vue.js"></script>
@@ -195,6 +195,9 @@
                     </div>
                     <h4>Layout Options</h4>
                     <div class="section">
+                        <select v-model="template" id="templates" class="templates">
+                            <option :value="template" v-for="template in templates">{{ template }}</option>
+                        </select>
                         <div class="inputcontainer">
                             <span>Landscape</span>
                             <input v-model="card.imageSettings.landscape" type="checkbox" name="landscape" />
@@ -234,6 +237,7 @@
                     <span v-if="card.actions.coordinate">o</span>
                     <span v-if="card.actions.reinforce">i</span>
                 </div>
+
                 <div class="pilottext">{{ card.cardtext }}</div>
                 <div id="upgradebar" class="upgradebar iconfont">
                     {{card.upgrades.used}}
