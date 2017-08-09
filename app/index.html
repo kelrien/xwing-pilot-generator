@@ -196,7 +196,7 @@
                     <h4>Layout Options</h4>
                     <div class="section">
                         <select v-model="template" id="templates" class="templates">
-                            <option :value="template" v-for="template in templates">{{ template }}</option>
+                            <option :value="template.path" v-for="template in templates">{{ template.name }}</option>
                         </select>
                         <div class="inputcontainer">
                             <span>Landscape</span>

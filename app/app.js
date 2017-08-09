@@ -273,6 +273,16 @@ var app = new Vue({
             app.templates = args;
         });
 
+        ipc.on("change", (sender, args) => {
+            if(args.event === "change" && args.path === app.template){
+                document.getElementById("test").href = args.path +"?v=1.x" + new Date().getTime();
+                app.renderPreview();
+            }
+            if(args.event === "rename"){
+                //TODO: Check if new file is being added or deleted
+            }
+        });
+
         ipc.send("templates", "");
         this._createCanvas();
         window.addEventListener('resize', (event) => {

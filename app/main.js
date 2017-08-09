@@ -47,8 +47,22 @@ app.on('ready', function () {
 
     mainWindow.templates = fs.readdirSync(templatesPath)
         .filter(folder => folder.endsWith(".css"))
-        .map(template => templatesPath + "/" + template);
-    mainWindow.webContents.openDevTools();
+        .map(template => {
+            return {
+                path: templatesPath + "/" + template,
+                name: template
+            }
+        });
+
+    fs.watch(templatesPath, (event, template) => {
+        mainWindow.webContents.send("change", {
+            event: event,
+            path: templatesPath + "/" + template,
+            name: template
+        });
+    });
+
+
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
     });
@@ -84,5 +98,11 @@ function getTemplatePath() {
 function checkTemplateDir(path) {
     if (!fs.existsSync(path)) {
         fs.mkdirSync(path);
+        fs.createReadStream(__dirname + "/css/_pilot.css")
+            .pipe(fs.createWriteStream(path + "/" + "Standard.css"));
+        fs.createReadStream(__dirname + "/css/_pilot.less")
+            .pipe(fs.createWriteStream(path + "/" + "Standard.less"));
+        fs.createReadStream(__dirname + "/css/_colors.less")
+            .pipe(fs.createWriteStream(path + "/" + "_colors.less"));
     }
 }
