@@ -2,10 +2,11 @@ var portraitRatio = 0.71428571428,
     landscapeRatio = 1.4,
     ipc = require('electron').ipcRenderer;
 
-var app = new Vue({
+window.onload = function(){
+    var app = new Vue({
     el: '#main',
     data: {
-        template: "",
+        template: "Standard.css",
         templates: [],
         card: {
             actions: {
@@ -73,7 +74,7 @@ var app = new Vue({
     watch: {
         "template": {
             handler: function (newVal, oldVal) {
-                document.getElementById("test").href = newVal;
+                document.getElementById("templateStyle").href = newVal;
                 this.renderPreview();
             }
         },
@@ -275,7 +276,7 @@ var app = new Vue({
 
         ipc.on("change", (sender, args) => {
             if(args.event === "change" && args.path === app.template){
-                document.getElementById("test").href = args.path +"?v=1.x" + new Date().getTime();
+                document.getElementById("templateStyle").href = args.path +"?v=1.x" + new Date().getTime();
                 app.renderPreview();
             }
             if(args.event === "rename"){
@@ -290,3 +291,4 @@ var app = new Vue({
         })
     }
 })
+}

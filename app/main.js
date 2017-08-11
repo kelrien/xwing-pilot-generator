@@ -91,6 +91,8 @@ function getTemplatePath() {
         case "win32":
             regex = "\\resources\\app.asar"
             break;
+        case "linux":
+            break;
     }
     return app.getAppPath().split(regex)[0] + "/templates";
 }
@@ -98,6 +100,7 @@ function getTemplatePath() {
 function checkTemplateDir(path) {
     if (!fs.existsSync(path)) {
         fs.mkdirSync(path);
+        //Create the templates folder and the standard template
         fs.createReadStream(__dirname + "/css/_pilot.css")
             .pipe(fs.createWriteStream(path + "/" + "Standard.css"));
         fs.createReadStream(__dirname + "/css/_pilot.less")
