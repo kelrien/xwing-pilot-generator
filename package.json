@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "node_modules/.bin/electron-packager ./app/ --all --asar --out ./dist/ --overwrite",
-    "dev": "./node_modules/.bin/electron ./app main.js"
+    "dev": "./node_modules/.bin/electron ./app main.js",
+    "package-linux": "node_modules/.bin/electron-packager ./app/ --platform=linux --arch=x64 --asar --out ./dist/ --overwrite",
+    "package-mac": "node_modules/.bin/electron-packager ./app/ --platform=darwin --arch=x64 --asar --out ./dist/ --overwrite"
   },
   "keywords": [
     "xwing",
