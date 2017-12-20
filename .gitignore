@@ -3,3 +3,4 @@ dist/
 cache/
 templates/
 .vscode/
+.DS_Store
